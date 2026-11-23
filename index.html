@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивный конспект для ЕНТ по информатике: компьютерные системы, сети, аппаратное и программное обеспечение, информационная безопасность.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>ЕНТ · Информатика — интерактивный конспект</title>
+  <script>
+    try {
+      var t = localStorage.getItem("ent-theme");
+      try { t = JSON.parse(t); } catch (e) {}
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn menu-btn" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    <a class="brand" href="#start">
+      <span class="brand-mark">И</span>
+      <span class="brand-text">ЕНТ · Информатика<small>интерактивный конспект</small></span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input class="search-input" id="searchInput" type="search" placeholder="Поиск…" autocomplete="off" aria-label="Поиск по конспекту">
+      <span class="search-kbd">Ctrl K</span>
+      <div class="search-results" id="searchResults" role="listbox"></div>
+    </div>
+    <button class="icon-btn" id="themeToggle" aria-label="Переключить тему" title="Светлая / тёмная тема">☀</button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="progress-card">
+        <div class="progress-top">
+          <span class="progress-label">Прогресс</span>
+          <span class="progress-value" id="progressValue">0%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-hint" id="progressHint">Отмечай изученные разделы — прогресс сохранится.</div>
+      </div>
+      <nav class="nav" id="nav" aria-label="Разделы конспекта"></nav>
+      <div class="sidebar-foot">
+        <strong>ЕНТ 2026</strong><br>
+        110 тренировочных вопросов по восьми темам. Включены задания с одним и несколькими ответами, верно/неверно и на соответствие.
+      </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main" id="main">
+
+      <!-- ================= СТАРТ ================= -->
+      <section class="section active" id="start" data-nav="Старт" data-num="00" data-markable="false">
+        <div class="hero">
+          <div class="row" style="gap:7px">
+            <span class="badge accent">Раздел 01 · Тема 02</span>
+            <span class="badge violet">Раздел 04 · Тема 08</span>
+            <span class="badge">ЕНТ 2026</span>
+          </div>
+          <h1>Компьютерные системы, сети и безопасность — <span class="grad">по полочкам</span></h1>
+          <p class="lead">Полный интерактивный конспект: от процессора и операционной системы до топологий, IP-адресации, модели OSI и защиты информации. С тренажёрами, ловушками ЕНТ и видео.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#basics">Начать с основ →</a>
+            <a class="btn" href="#practice">Проверить себя</a>
+            <a class="btn ghost" href="#videos">Смотреть видео</a>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><b>14</b><span>учебных разделов</span></div>
+            <div class="stat"><b>110+</b><span>вопросов в тренажёре</span></div>
+            <div class="stat"><b>9</b><span>интерактивных модулей</span></div>
+            <div class="stat"><b>21</b><span>видео и подборок</span></div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <a class="card quick-link" href="#basics">
+            <span class="badge accent">01</span>
+            <h3 style="margin-top:10px">Пойми железо</h3>
+            <p class="small muted">Компьютерная система, CPU, RAM, накопители, шины и периферия.</p>
+            <span class="quick-arrow">Перейти →</span>
+          </a>
+          <a class="card quick-link" href="#networks">
+            <span class="badge violet">02</span>
+            <h3 style="margin-top:10px">Разберись в сетях</h3>
+            <p class="small muted">LAN и WAN, топологии, коммутаторы, протоколы, IP и OSI.</p>
+            <span class="quick-arrow">Перейти →</span>
+          </a>
+          <a class="card quick-link" href="#practice">
+            <span class="badge good">03</span>
+            <h3 style="margin-top:10px">Закрепи практикой</h3>
+            <p class="small muted">Квиз с разбором, карточки, сортировка и калькулятор подсетей.</p>
+            <span class="quick-arrow">Перейти →</span>
+          </a>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="spread" style="flex-wrap:wrap">
+            <div>
+              <h2>Что проверяют на ЕНТ</h2>
+              <p class="small muted">Официальная спецификация задаёт темы и структуру теста, но не точные формулировки вопросов.</p>
+            </div>
+            <span class="badge">40 заданий · 120 минут</span>
+          </div>
+          <div class="table-wrap compact" style="margin-top:14px">
+            <table>
+              <thead>
+                <tr><th>Формат</th><th>Количество</th><th>Что тренировать</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Задания с одним правильным ответом</td><td>25</td><td>Определения, функции устройств, протоколы</td></tr>
+                <tr><td>Задания по общему контексту</td><td>5</td><td>Читать ситуацию и применять несколько понятий</td></tr>
+                <tr><td>Задания с одним или несколькими ответами</td><td>5</td><td>Не пропустить второй правильный вариант</td></tr>
+                <tr><td>Задания на соответствие</td><td>5</td><td>Пары «термин → функция», «протокол → назначение»</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-3" style="margin-top:14px">
+            <div class="callout tip"><span class="callout-title">Уровень A · 50%</span>Базовые понятия и узнавание терминов.</div>
+            <div class="callout info"><span class="callout-title">Уровень B · 30%</span>Сравнение, классификация, применение правила.</div>
+            <div class="callout warn"><span class="callout-title">Уровень C · 20%</span>Расчёты, анализ контекста, несколько верных ответов.</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3>Раздел 01 · Тема 02</h3>
+            <p class="small muted">Компьютерные сети. Организация компьютерных сетей. Информационная безопасность.</p>
+            <div class="pill-row" style="margin-top:12px">
+              <a class="chip" href="#networks">Сети</a>
+              <a class="chip" href="#equipment">Оборудование</a>
+              <a class="chip" href="#transmission">Протоколы</a>
+              <a class="chip" href="#addressing">IP и MAC</a>
+              <a class="chip" href="#osi">OSI</a>
+              <a class="chip" href="#security">Угрозы</a>
+              <a class="chip" href="#protection">Защита</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Раздел 04 · Тема 08</h3>
+            <p class="small muted">Аппаратное обеспечение. Программное обеспечение.</p>
+            <div class="pill-row" style="margin-top:12px">
+              <a class="chip" href="#basics">Компьютерная система</a>
+              <a class="chip" href="#hardware">Hardware</a>
+              <a class="chip" href="#software">Software</a>
+              <a class="chip" href="#hardware">Накопители</a>
+              <a class="chip" href="#software">ОС и драйверы</a>
+              <a class="chip" href="#software">Лицензии</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Как пользоваться конспектом</h2>
+          <div class="grid-4" style="margin-top:12px">
+            <div><span class="badge accent">1</span><h4 style="margin-top:8px">Читай по разделам</h4><p class="tiny muted">Слева — навигация. Порядок разделов повторяет логику: железо → ПО → сети → безопасность.</p></div>
+            <div><span class="badge accent">2</span><h4 style="margin-top:8px">Тыкай в интерактив</h4><p class="tiny muted">Сортируй устройства, запускай симуляцию коммутатора, считай подсети, листай карточки.</p></div>
+            <div><span class="badge accent">3</span><h4 style="margin-top:8px">Отмечай прогресс</h4><p class="tiny muted">Кнопка «Отметить изученным» в каждом разделе. Прогресс хранится в браузере.</p></div>
+            <div><span class="badge accent">4</span><h4 style="margin-top:8px">Ищи по конспекту</h4><p class="tiny muted">Поиск сверху или <kbd>Ctrl</kbd> + <kbd>K</kbd>. Найденный фрагмент подсветится.</p></div>
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Источники и оговорка</summary>
+          <div class="acc-body">
+            <p>Конспект составлен по официальной спецификации НЦТ и учебным материалам по компьютерным системам, сетям и информационной безопасности.</p>
+            <ul>
+              <li><a href="https://prod.testcenter.kz/wp-content/uploads/2025/10/29_%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0_%D1%80%D1%83%D1%81.pdf" target="_blank" rel="noopener">НЦТ — спецификация ЕНТ по информатике</a></li>
+              <li><a href="https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html" target="_blank" rel="noopener">Cisco — Networking Basics</a></li>
+              <li><a href="https://csrc.nist.gov/glossary/term/security" target="_blank" rel="noopener">NIST — Information Security Glossary</a></li>
+              <li><a href="https://www.nist.gov/publications/preventing-and-handling-malware-incidents-how-protect-information-technology-systems" target="_blank" rel="noopener">NIST — Malware and Security</a></li>
+              <li><a href="https://opentextbc.ca/computerstudies/chapter/computer-hardware-and-software/" target="_blank" rel="noopener">Open Textbook — Computer Hardware and Software</a></li>
+              <li><a href="https://edustud.nic.in/edu/SupportMaterial202324/11/11_computerscience_eng_sm_2024.pdf" target="_blank" rel="noopener">Учебный материал по Computer Science</a></li>
+            </ul>
+            <p class="small muted">Спецификация перечисляет широкие темы, а не полный список терминов. Дополнительные понятия в конспекте помогают понимать формулировки, но не гарантируют их появление на экзамене.</p>
+          </div>
+        </details>
+
+        <footer class="site-footer">
+          <span>ЕНТ · Информатика — интерактивный конспект</span>
+          <span>Тёмная тема · офлайн-доступ · без регистрации</span>
+        </footer>
+      </section>
+
+      <!-- ================= ОСНОВЫ ================= -->
+      <section class="section" id="basics" data-nav="Основы системы" data-num="01" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · фундамент</div>
+            <h1>Компьютерная система</h1>
+            <p class="lead">Прежде чем разбирать сети и программы, нужно понять, из чего состоит компьютер и как связаны его железо и программное обеспечение.</p>
+          </div>
+          <button class="mark-btn" data-mark="basics">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="def">
+            <span class="term">Компьютерная система</span> — совокупность аппаратного и программного обеспечения, предназначенная для ввода, обработки, хранения и вывода информации.
+          </div>
+          <div class="two-col" style="margin-top:16px">
+            <div class="card soft">
+              <div class="spread"><h3>Hardware</h3><span class="badge accent">железо</span></div>
+              <p class="small">Все физические части компьютера, которые можно увидеть и потрогать.</p>
+              <div class="pill-row" style="margin-top:10px">
+                <span class="chip">CPU</span><span class="chip">Материнская плата</span><span class="chip">RAM</span><span class="chip">HDD / SSD</span><span class="chip">GPU</span><span class="chip">Монитор</span><span class="chip">Клавиатура</span>
+              </div>
+            </div>
+            <div class="card soft">
+              <div class="spread"><h3>Software</h3><span class="badge violet">программы</span></div>
+              <p class="small">Совокупность программ, инструкций и данных, которые управляют компьютером и позволяют решать задачи.</p>
+              <div class="pill-row" style="margin-top:10px">
+                <span class="chip">Windows</span><span class="chip">Linux</span><span class="chip">Android</span><span class="chip">Word</span><span class="chip">Chrome</span><span class="chip">Python</span><span class="chip">Photoshop</span>
+              </div>
+            </div>
+          </div>
+          <div class="callout tip" style="margin-top:16px">
+            <span class="callout-title">Главная связка</span>
+            Hardware без Software не выполняет пользовательские задачи, а Software нуждается в Hardware для работы. Это не конкуренты, а две половины одной системы.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Проверь себя: Hardware или Software?</h2>
+          <p class="small muted" style="margin-top:4px">Нажми на элемент, затем на нужную колонку. Можно перетаскивать мышью или пальцем.</p>
+          <div class="sorter" data-sorter style="margin-top:14px">
+            <div class="sorter-pool" data-pool>
+              <button class="sort-item" draggable="true" data-answer="hw">Процессор (CPU)</button>
+              <button class="sort-item" draggable="true" data-answer="sw">Windows</button>
+              <button class="sort-item" draggable="true" data-answer="hw">Оперативная память</button>
+              <button class="sort-item" draggable="true" data-answer="sw">Google Chrome</button>
+              <button class="sort-item" draggable="true" data-answer="hw">SSD</button>
+              <button class="sort-item" draggable="true" data-answer="sw">Photoshop</button>
+              <button class="sort-item" draggable="true" data-answer="hw">Клавиатура</button>
+              <button class="sort-item" draggable="true" data-answer="sw">Microsoft Word</button>
+              <button class="sort-item" draggable="true" data-answer="hw">Видеокарта (GPU)</button>
+              <button class="sort-item" draggable="true" data-answer="sw">Linux</button>
+              <button class="sort-item" draggable="true" data-answer="sw">Драйвер</button>
+              <button class="sort-item" draggable="true" data-answer="hw">Монитор</button>
+            </div>
+            <div class="sorter-zones">
+              <div class="sort-zone" data-zone="hw"><h4>Hardware · железо</h4><div class="zone-items"></div></div>
+              <div class="sort-zone" data-zone="sw"><h4>Software · программы</h4><div class="zone-items"></div></div>
+            </div>
+            <div class="sorter-actions">
+              <button class="btn small primary" data-check>Проверить</button>
+              <button class="btn small ghost" data-reset>Сбросить</button>
+              <span class="sorter-result" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Как компьютер обрабатывает информацию</h2>
+          <p class="small muted" style="margin-top:4px">Принцип IPO — Input, Process, Output. Четвёртый этап — хранение.</p>
+          <div class="grid-4" style="margin-top:14px">
+            <div class="card soft">
+              <span class="badge accent">Input</span>
+              <h4 style="margin-top:9px">Ввод</h4>
+              <p class="tiny muted">Клавиатура, мышь, сканер, микрофон, камера передают данные и команды.</p>
+            </div>
+            <div class="card soft">
+              <span class="badge violet">Process</span>
+              <h4 style="margin-top:9px">Обработка</h4>
+              <p class="tiny muted">Процессор выполняет команды, GPU обрабатывает графику, RAM хранит рабочие данные.</p>
+            </div>
+            <div class="card soft">
+              <span class="badge">Storage</span>
+              <h4 style="margin-top:9px">Хранение</h4>
+              <p class="tiny muted">SSD, HDD, флешки и карты памяти сохраняют данные после выключения.</p>
+            </div>
+            <div class="card soft">
+              <span class="badge warn">Output</span>
+              <h4 style="margin-top:9px">Вывод</h4>
+              <p class="tiny muted">Монитор, принтер, динамики, проектор показывают результат пользователю.</p>
+            </div>
+          </div>
+          <div class="callout info" style="margin-top:14px">
+            <span class="callout-title">Пример</span>
+            Ты вводишь в калькулятор <code>5 + 5</code>. Клавиатура передаёт числа и знак, процессор выполняет операцию, результат временно лежит в RAM, а монитор показывает <code>10</code>.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Конфигурация компьютера</h2>
+          <p class="small muted" style="margin-top:4px">Совокупность аппаратных компонентов и их характеристик. Подбор зависит от задачи.</p>
+          <div class="table-wrap compact" style="margin-top:14px">
+            <table>
+              <thead><tr><th>Задача</th><th>На что смотреть в первую очередь</th></tr></thead>
+              <tbody>
+                <tr><td>Офисная работа, учёба</td><td>CPU, RAM, SSD</td></tr>
+                <tr><td>Игры</td><td>GPU, CPU, RAM</td></tr>
+                <tr><td>Видеомонтаж</td><td>CPU, GPU, RAM, быстрый SSD</td></tr>
+                <tr><td>Машинное обучение</td><td>GPU и VRAM, RAM, CPU</td></tr>
+                <tr><td>Хранение большого архива</td><td>HDD / SSD большого объёма</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="callout warn">
+              <span class="callout-title">Не путай RAM и VRAM</span>
+              <b>RAM</b> — оперативная память системы. <b>VRAM</b> — видеопамять, которую использует GPU для текстур, изображений и кадров. Это разные ресурсы.
+            </div>
+            <div class="callout tip">
+              <span class="callout-title">Запомни для ЕНТ</span>
+              Configuration — это не «мощность компьютера» одним словом, а конкретный набор компонентов и их параметров: модель CPU, объём RAM, тип накопителя, модель GPU.
+            </div>
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по разделу</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>Чем Hardware отличается от Software?</summary><p>Hardware — физические компоненты. Software — программы, инструкции и данные. Драйвер и ОС относятся к Software, хотя управляют Hardware.</p></details>
+            <details class="qa"><summary>Что означает IPO?</summary><p>Input → Process → Output: ввод, обработка, вывод. Хранение (Storage) часто добавляют как отдельный этап.</p></details>
+            <details class="qa"><summary>Почему RAM и SSD нельзя считать одним и тем же?</summary><p>RAM — энергозависимая рабочая память, содержимое теряется при выключении. SSD — энергонезависимый накопитель для долговременного хранения.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= HARDWARE ================= -->
+      <section class="section" id="hardware" data-nav="Аппаратное обеспечение" data-num="02" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 04 · Тема 08</div>
+            <h1>Аппаратное обеспечение</h1>
+            <p class="lead">Как устроен компьютер внутри: процессор, память, материнская плата, накопители, шины и периферия. Запоминай не только названия, но и функцию каждого компонента.</p>
+          </div>
+          <button class="mark-btn" data-mark="hardware">Отметить изученным</button>
+        </div>
+
+        <div class="grid-4">
+          <div class="card soft"><span class="badge accent">Input</span><h4 style="margin-top:9px">Устройства ввода</h4><p class="tiny muted">Передают информацию и команды в компьютер.</p></div>
+          <div class="card soft"><span class="badge violet">Process</span><h4 style="margin-top:9px">Обработка</h4><p class="tiny muted">CPU и GPU выполняют команды и вычисления.</p></div>
+          <div class="card soft"><span class="badge">Storage</span><h4 style="margin-top:9px">Хранение</h4><p class="tiny muted">HDD, SSD, флеш-память, оптические диски.</p></div>
+          <div class="card soft"><span class="badge warn">Output</span><h4 style="margin-top:9px">Устройства вывода</h4><p class="tiny muted">Показывают, печатают, воспроизводят результат.</p></div>
+        </div>
+
+        <div class="card">
+          <h2>Устройства ввода и вывода</h2>
+          <div class="grid-2" style="margin-top:12px">
+            <div>
+              <h3>Ввод · Input</h3>
+              <div class="table-wrap compact" style="margin-top:8px">
+                <table>
+                  <tbody>
+                    <tr><td><b>Keyboard</b></td><td>Текст и команды</td></tr>
+                    <tr><td><b>Mouse</b></td><td>Управление указателем</td></tr>
+                    <tr><td><b>Scanner</b></td><td>Документы и изображения → цифровая форма</td></tr>
+                    <tr><td><b>Microphone</b></td><td>Ввод звука</td></tr>
+                    <tr><td><b>Webcam</b></td><td>Ввод изображения и видео</td></tr>
+                    <tr><td><b>Joystick</b></td><td>Управление в играх</td></tr>
+                    <tr><td><b>Touchpad</b></td><td>Управление указателем</td></tr>
+                    <tr><td><b>Barcode Reader</b></td><td>Считывание штрихкодов</td></tr>
+                    <tr><td><b>Graphics Tablet</b></td><td>Рисование и ввод графики</td></tr>
+                    <tr><td><b>Touchscreen</b></td><td>Ввод прикосновением</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <h3>Вывод · Output</h3>
+              <div class="table-wrap compact" style="margin-top:8px">
+                <table>
+                  <tbody>
+                    <tr><td><b>Monitor</b></td><td>Отображение информации</td></tr>
+                    <tr><td><b>Printer</b></td><td>Печать документов</td></tr>
+                    <tr><td><b>Speaker</b></td><td>Вывод звука</td></tr>
+                    <tr><td><b>Headphones</b></td><td>Вывод звука</td></tr>
+                    <tr><td><b>Projector</b></td><td>Проецирование изображения</td></tr>
+                    <tr><td><b>Plotter</b></td><td>Крупноформатные чертежи и схемы</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout warn" style="margin-top:12px">
+                <span class="callout-title">Ловушка ЕНТ</span>
+                <b>Touchscreen</b> — одновременно устройство ввода и вывода. <b>Scanner</b> — только ввод, <b>monitor</b> и <b>printer</b> — только вывод.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Проверь себя: ввод или вывод?</h2>
+          <p class="small muted" style="margin-top:4px">Разложи устройства по двум колонкам. Правило простое: устройство ввода передаёт данные <em>в</em> компьютер, устройство вывода — <em>из</em> компьютера.</p>
+          <div class="sorter" data-sorter style="margin-top:14px">
+            <div class="sorter-pool" data-pool>
+              <button class="sort-item" draggable="true" data-answer="in">Клавиатура</button>
+              <button class="sort-item" draggable="true" data-answer="out">Монитор</button>
+              <button class="sort-item" draggable="true" data-answer="in">Сканер</button>
+              <button class="sort-item" draggable="true" data-answer="out">Принтер</button>
+              <button class="sort-item" draggable="true" data-answer="in">Микрофон</button>
+              <button class="sort-item" draggable="true" data-answer="out">Динамики</button>
+              <button class="sort-item" draggable="true" data-answer="in">Веб-камера</button>
+              <button class="sort-item" draggable="true" data-answer="out">Проектор</button>
+              <button class="sort-item" draggable="true" data-answer="in">Джойстик</button>
+              <button class="sort-item" draggable="true" data-answer="out">Плоттер</button>
+            </div>
+            <div class="sorter-zones">
+              <div class="sort-zone" data-zone="in"><h4>Устройства ввода</h4><div class="zone-items"></div></div>
+              <div class="sort-zone" data-zone="out"><h4>Устройства вывода</h4><div class="zone-items"></div></div>
+            </div>
+            <div class="sorter-actions">
+              <button class="btn small primary" data-check>Проверить</button>
+              <button class="btn small ghost" data-reset>Сбросить</button>
+              <span class="sorter-result" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <h2>CPU — центральный процессор</h2>
+            <span class="badge accent">«мозг» компьютера</span>
+          </div>
+          <p class="small" style="margin-top:8px"><b>CPU (Central Processing Unit)</b> выполняет команды программ, обрабатывает данные и управляет работой вычислительной системы.</p>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="card soft">
+              <h4>Тактовая частота · Clock Speed</h4>
+              <p class="small muted">Количество тактов в секунду. 1 Hz = 1 такт/с, 1 MHz = 10⁶ Гц, 1 GHz = 10⁹ Гц. Например, 3 GHz — 3 миллиарда тактов в секунду.</p>
+              <p class="tiny" style="margin-top:6px;color:var(--warn)">Частота ≠ количество инструкций в секунду: за такт может выполняться разное число операций.</p>
+            </div>
+            <div class="card soft">
+              <h4>Ядра · Cores</h4>
+              <p class="small muted">Ядро — вычислительная часть процессора, способная выполнять поток инструкций. 2 ядра — Dual-Core, 4 — Quad-Core, 6 — Hexa-Core, 8 — Octa-Core.</p>
+              <p class="tiny" style="margin-top:6px;color:var(--muted)">Больше ядер — больше параллельной работы, но итог зависит от программы.</p>
+            </div>
+            <div class="card soft">
+              <h4>Потоки · Threads</h4>
+              <p class="small muted">Поток — последовательность инструкций, которую планирует ОС. Технология SMT позволяет одному физическому ядру обрабатывать несколько аппаратных потоков.</p>
+              <p class="tiny" style="margin-top:6px;color:var(--muted)">Пример: 8 ядер и 16 потоков.</p>
+            </div>
+            <div class="card soft">
+              <h4>Разрядность · Bitness</h4>
+              <p class="small muted">Размер данных, которыми процессор оперирует за операцию, и связанные с архитектурой возможности адресации.</p>
+              <p class="tiny" style="margin-top:6px;color:var(--muted)">32-битная и 64-битная архитектуры.</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:18px">Кэш-память · Cache</h3>
+          <p class="small muted">Очень быстрая память внутри процессора или рядом с ядрами. Хранит часто используемые данные и инструкции, чтобы реже обращаться к медленной RAM.</p>
+          <div class="cache-bars" style="margin-top:12px">
+            <div class="cache-row"><span class="cache-label">L1</span><div class="cache-track"><div class="cache-fill l1" style="width:24%"></div></div><span class="cache-note">самая быстрая · обычно самая маленькая</span></div>
+            <div class="cache-row"><span class="cache-label">L2</span><div class="cache-track"><div class="cache-fill l2" style="width:52%"></div></div><span class="cache-note">больше L1 · обычно медленнее</span></div>
+            <div class="cache-row"><span class="cache-label">L3</span><div class="cache-track"><div class="cache-fill l3" style="width:86%"></div></div><span class="cache-note">обычно больше L2 · медленнее</span></div>
+          </div>
+          <div class="callout tip" style="margin-top:14px">
+            <span class="callout-title">Правило скорости</span>
+            L1 быстрее L2, L2 быстрее L3. По объёму обычно наоборот: L1 &lt; L2 &lt; L3. Конкретные размеры зависят от модели процессора.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Материнская плата · Motherboard</h2>
+          <p class="small" style="margin-top:6px">Главная печатная плата, которая соединяет компоненты и обеспечивает их взаимодействие.</p>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="table-wrap compact">
+              <table>
+                <thead><tr><th>Элемент</th><th>Назначение</th></tr></thead>
+                <tbody>
+                  <tr><td><b>CPU Socket</b></td><td>Разъём для установки процессора</td></tr>
+                  <tr><td><b>RAM Slots</b></td><td>Слоты для модулей оперативной памяти</td></tr>
+                  <tr><td><b>PCI Express</b></td><td>Интерфейс высокоскоростных устройств: видеокарта, NVMe-адаптеры</td></tr>
+                  <tr><td><b>SATA</b></td><td>Подключение HDD и SATA SSD</td></tr>
+                  <tr><td><b>M.2</b></td><td>Компактный разъём, часто для NVMe SSD</td></tr>
+                  <tr><td><b>Chipset</b></td><td>Набор контроллеров и логики взаимодействия компонентов</td></tr>
+                  <tr><td><b>BIOS / UEFI</b></td><td>Прошивка начальной проверки и инициализации оборудования</td></tr>
+                  <tr><td><b>Питание</b></td><td>Разъёмы подключения блока питания</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="stack-sm">
+              <div class="callout info">
+                <span class="callout-title">BIOS</span>
+                <b>Basic Input/Output System</b> — встроенное ПО, которое при запуске проверяет и инициализирует оборудование и передаёт управление загрузчику ОС.
+              </div>
+              <div class="callout tip">
+                <span class="callout-title">UEFI</span>
+                <b>Unified Extensible Firmware Interface</b> — современный интерфейс прошивки, заменивший традиционный BIOS во многих компьютерах.
+              </div>
+              <div class="callout warn">
+                <span class="callout-title">Не путай</span>
+                Шина — путь передачи сигналов. Проводники на плате — физические дорожки. Разъём — место подключения. Порт — интерфейс обмена данными.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>RAM — оперативная память</h2>
+            <p class="small" style="margin-top:6px"><b>Random Access Memory</b> — временное хранение данных и инструкций работающих программ.</p>
+            <ul class="small" style="margin-top:10px">
+              <li>Энергозависимая: после отключения питания содержимое обычно теряется.</li>
+              <li>Быстрый доступ, используется запущенными программами.</li>
+              <li>Если памяти мало, ОС может использовать часть накопителя как виртуальную память — это медленнее.</li>
+            </ul>
+            <div class="grid-2" style="margin-top:12px">
+              <div class="card soft"><h4>DRAM</h4><p class="tiny muted">Динамическая память, обычно системная RAM.</p></div>
+              <div class="card soft"><h4>SRAM</h4><p class="tiny muted">Статическая, например кэш процессора.</p></div>
+            </div>
+          </div>
+          <div class="card">
+            <h2>ROM — постоянная память</h2>
+            <p class="small" style="margin-top:6px"><b>Read-Only Memory</b> — память для данных, которые не должны исчезать при отключении питания.</p>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>RAM</th><th>ROM</th></tr></thead>
+                <tbody>
+                  <tr><td>Энергозависимая</td><td>Энергонезависимая</td></tr>
+                  <tr><td>Рабочие данные программ</td><td>Прошивки, постоянные данные</td></tr>
+                  <tr><td>Обычно чтение и запись</td><td>Традиционно преимущественно чтение</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warn" style="margin-top:12px">
+              <span class="callout-title">Ловушка</span>
+              ROM не означает, что современный чип физически невозможно изменить. Прошивка часто хранится во Flash-памяти и перепрограммируется. «Read-only» — историческое название категории.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>GPU — графический процессор</h2>
+          <p class="small" style="margin-top:6px"><b>Graphics Processing Unit</b> обрабатывает графику и выполняет массово-параллельные вычисления.</p>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="card soft"><h4>Integrated GPU</h4><p class="small muted">Встроенная графика в процессор или системный чип. Экономичнее, обычно слабее дискретной.</p></div>
+            <div class="card soft"><h4>Discrete GPU</h4><p class="small muted">Отдельная видеокарта со своей VRAM. Нужна для игр, 3D, монтажа, ИИ.</p></div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>CPU</th><th>GPU</th></tr></thead>
+              <tbody>
+                <tr><td>Универсальные вычисления</td><td>Массово-параллельные вычисления</td></tr>
+                <tr><td>Обычно небольшое число мощных ядер</td><td>Обычно большое число вычислительных блоков</td></tr>
+                <tr><td>Управление программами</td><td>Графика, видео, ИИ, параллельные задачи</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Накопители информации</h2>
+          <p class="small" style="margin-top:6px">Устройства долговременного хранения. Главное отличие от RAM: данные сохраняются после выключения.</p>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Тип</th><th>Принцип</th><th>Особенности</th></tr></thead>
+              <tbody>
+                <tr><td><b>HDD</b></td><td>Вращающиеся магнитные пластины и головки чтения/записи</td><td>Механический, большая ёмкость за небольшую цену, обычно медленнее SSD</td></tr>
+                <tr><td><b>SSD</b></td><td>Флеш-память, без движущихся частей</td><td>Быстрее HDD, бывает SATA и NVMe</td></tr>
+                <tr><td><b>USB Flash</b></td><td>Флеш-память через USB</td><td>Переносной накопитель</td></tr>
+                <tr><td><b>Memory Card</b></td><td>Флеш-память в формате карты</td><td>Телефоны, камеры, планшеты</td></tr>
+                <tr><td><b>Optical Disc</b></td><td>Считывание лазером</td><td>CD, DVD, Blu-ray</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="table-wrap compact">
+              <table>
+                <thead><tr><th>Носитель</th><th>Типичная ёмкость</th></tr></thead>
+                <tbody>
+                  <tr><td>CD</td><td>700 MB</td></tr>
+                  <tr><td>DVD (однослойный)</td><td>4,7 GB</td></tr>
+                  <tr><td>Blu-ray (однослойный)</td><td>25 GB</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warn" style="align-self:start">
+              <span class="callout-title">Ловушка ЕНТ</span>
+              <b>CD-R / DVD-R</b> — однократная запись. <b>CD-RW / DVD-RW</b> — многократная перезапись. Суффикс <b>RW</b> = ReWritable.
+            </div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Обозначение</th><th>Что означает</th></tr></thead>
+              <tbody>
+                <tr><td><b>CD-ROM / DVD-ROM</b></td><td>Только чтение</td></tr>
+                <tr><td><b>CD-R / DVD-R</b></td><td>Однократная запись</td></tr>
+                <tr><td><b>CD-RW / DVD-RW</b></td><td>Многократная перезапись</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Шины компьютера · Bus</h2>
+          <p class="small" style="margin-top:6px"><b>Шина</b> — система передачи данных, сигналов и адресов между компонентами компьютера.</p>
+          <div class="bus-demo" data-bus style="margin-top:14px">
+            <div class="bus-lines">
+              <div class="bus-line" data-bus-line="addr"><b>Address Bus</b><span>передаёт адрес ячейки памяти или устройства</span><i class="bus-pulse"></i></div>
+              <div class="bus-line" data-bus-line="control"><b>Control Bus</b><span>передаёт управляющие сигналы, например «читать»</span><i class="bus-pulse"></i></div>
+              <div class="bus-line" data-bus-line="data"><b>Data Bus</b><span>передаёт сами данные</span><i class="bus-pulse"></i></div>
+            </div>
+            <div class="row" style="margin-top:10px">
+              <button class="btn small primary" data-bus-run>▶ Прочитать ячейку памяти</button>
+              <button class="btn small ghost" data-bus-reset>Сброс</button>
+            </div>
+            <div class="bus-log" data-bus-log>Нажми кнопку — увидишь порядок сигналов при чтении.</div>
+          </div>
+          <div class="callout info" style="margin-top:12px">
+            <span class="callout-title">Последовательность</span>
+            Сначала Address Bus передаёт адрес, затем Control Bus — сигнал чтения, после этого Data Bus возвращает данные процессору.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Другие компоненты</h2>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Компонент</th><th>Назначение</th></tr></thead>
+              <tbody>
+                <tr><td><b>PSU</b> · Power Supply Unit</td><td>Блок питания: преобразует и распределяет электрическую энергию</td></tr>
+                <tr><td><b>Cooling System</b></td><td>Охлаждение компонентов</td></tr>
+                <tr><td><b>Heat Sink</b></td><td>Радиатор для отвода тепла</td></tr>
+                <tr><td><b>Fan</b></td><td>Вентилятор</td></tr>
+                <tr><td><b>CMOS Battery</b></td><td>Поддерживает часы реального времени и некоторые настройки прошивки</td></tr>
+                <tr><td><b>NIC</b></td><td>Сетевой адаптер для подключения к сети</td></tr>
+                <tr><td><b>Sound Card</b></td><td>Обработка звука</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по Hardware</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>Почему частота процессора не равна количеству инструкций в секунду?</summary><p>За один такт процессор выполняет разное количество операций в зависимости от архитектуры и команды. Частота — только число тактов.</p></details>
+            <details class="qa"><summary>Что быстрее: L1 или L3?</summary><p>L1 быстрее, но обычно меньше по объёму. L3 больше, но медленнее.</p></details>
+            <details class="qa"><summary>Какая память энергозависима?</summary><p>RAM. ROM энергонезависима. SSD и HDD тоже энергонезависимы.</p></details>
+            <details class="qa"><summary>Можно ли перезаписать CD-RW?</summary><p>Да, RW означает ReWritable. CD-R — только однократная запись.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= SOFTWARE ================= -->
+      <section class="section" id="software" data-nav="Программное обеспечение" data-num="03" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 04 · Тема 08</div>
+            <h1>Программное обеспечение</h1>
+            <p class="lead">Системное, прикладное и инструментальное ПО, операционная система, драйверы, утилиты и лицензии. Главное — уверенно относить программу к нужной категории.</p>
+          </div>
+          <button class="mark-btn" data-mark="software">Отметить изученным</button>
+        </div>
+
+        <div class="grid-4">
+          <div class="card soft">
+            <span class="badge accent">System</span>
+            <h4 style="margin-top:9px">Системное ПО</h4>
+            <p class="tiny muted">ОС, драйверы, утилиты, прошивки. Управляет ресурсами и работой других программ.</p>
+          </div>
+          <div class="card soft">
+            <span class="badge violet">Application</span>
+            <h4 style="margin-top:9px">Прикладное ПО</h4>
+            <p class="tiny muted">Браузеры, редакторы, игры, СУБД. Решает задачи пользователя.</p>
+          </div>
+          <div class="card soft">
+            <span class="badge">Programming</span>
+            <h4 style="margin-top:9px">Инструментальное ПО</h4>
+            <p class="tiny muted">IDE, компиляторы, интерпретаторы, отладчики. Для создания программ.</p>
+          </div>
+          <div class="card soft">
+            <span class="badge warn">Middleware</span>
+            <h4 style="margin-top:9px">Промежуточное ПО</h4>
+            <p class="tiny muted">Связывает приложения и сервисы, например серверы приложений.</p>
+          </div>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <h2>Операционная система</h2>
+            <span class="badge accent">главное системное ПО</span>
+          </div>
+          <p class="small" style="margin-top:8px"><b>ОС (Operating System)</b> — комплекс системных программ, который управляет ресурсами компьютера и обеспечивает взаимодействие пользователя, приложений и оборудования.</p>
+          <div class="pill-row" style="margin-top:10px">
+            <span class="chip">Windows</span><span class="chip">Linux</span><span class="chip">macOS</span><span class="chip">Android</span><span class="chip">iOS</span>
+          </div>
+          <div class="table-wrap compact" style="margin-top:14px">
+            <table>
+              <thead><tr><th>Функция</th><th>Что делает</th></tr></thead>
+              <tbody>
+                <tr><td><b>Process Management</b></td><td>Управляет процессами и их выполнением</td></tr>
+                <tr><td><b>Memory Management</b></td><td>Распределяет оперативную память</td></tr>
+                <tr><td><b>File Management</b></td><td>Управляет файлами и папками</td></tr>
+                <tr><td><b>Device Management</b></td><td>Управляет устройствами</td></tr>
+                <tr><td><b>Security</b></td><td>Управляет доступом и защитой</td></tr>
+                <tr><td><b>User Interface</b></td><td>Обеспечивает интерфейс пользователя</td></tr>
+                <tr><td><b>Resource Management</b></td><td>Распределяет ресурсы системы</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="card soft">
+              <h4>Процесс · Process</h4>
+              <p class="small muted">Программа, которая выполняется в данный момент. Когда ты запускаешь Python-файл, ОС создаёт процесс: выделяет память, загружает код и планирует выполнение на CPU.</p>
+            </div>
+            <div class="card soft">
+              <h4>Файловая система</h4>
+              <p class="small muted">Способ организации, хранения и управления файлами на накопителе.</p>
+              <div class="pill-row" style="margin-top:8px"><span class="chip">NTFS</span><span class="chip">FAT32</span><span class="chip">exFAT</span><span class="chip">ext4</span><span class="chip">APFS</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Драйверы устройств</h2>
+            <p class="small" style="margin-top:6px"><b>Драйвер</b> — программа, которая обеспечивает взаимодействие ОС с конкретным аппаратным устройством. ОС «объясняет» устройству, что делать, через драйвер.</p>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Устройство</th><th>Драйвер</th></tr></thead>
+                <tbody>
+                  <tr><td>Видеокарта</td><td>Graphics Driver</td></tr>
+                  <tr><td>Принтер</td><td>Printer Driver</td></tr>
+                  <tr><td>Звуковая карта</td><td>Audio Driver</td></tr>
+                  <tr><td>Сетевой адаптер</td><td>Network Driver</td></tr>
+                  <tr><td>USB-устройство</td><td>USB Driver</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warn" style="margin-top:12px">
+              <span class="callout-title">Ловушка</span>
+              Драйвер — это <b>программное обеспечение</b>, а принтер и видеокарта — <b>аппаратное</b>. «Драйвер видеокарты» не делает видеокарту программой.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Как ОС запускает программу</h2>
+            <div class="steps" style="margin-top:12px">
+              <div class="step"><span class="step-num">1</span><div><h4>Запуск</h4><p>Пользователь открывает файл или ярлык.</p></div></div>
+              <div class="step"><span class="step-num">2</span><div><h4>Создание процесса</h4><p>ОС выделяет память и загружает программный код.</p></div></div>
+              <div class="step"><span class="step-num">3</span><div><h4>Планирование</h4><p>Процесс получает время процессора.</p></div></div>
+              <div class="step"><span class="step-num">4</span><div><h4>Работа и вывод</h4><p>Программа обращается к файлам и устройствам через ОС и драйверы.</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Сервисные программы и утилиты</h2>
+          <p class="small" style="margin-top:4px"><b>Утилиты</b> — системные программы для обслуживания, диагностики, настройки, оптимизации и защиты компьютера.</p>
+          <div class="grid-3" style="margin-top:14px">
+            <div class="card soft"><h4>Антивирус</h4><p class="tiny muted">Обнаруживает, блокирует и удаляет вредоносное ПО.</p></div>
+            <div class="card soft"><h4>Disk Cleanup</h4><p class="tiny muted">Освобождает место, удаляя ненужные файлы.</p></div>
+            <div class="card soft"><h4>Архиваторы</h4><p class="tiny muted">Сжимают файлы и объединяют в архивы: ZIP, 7Z, RAR.</p></div>
+            <div class="card soft"><h4>Дефрагментация</h4><p class="tiny muted">Упорядочивает фрагментированные данные на HDD.</p></div>
+            <div class="card soft"><h4>Backup</h4><p class="tiny muted">Создаёт резервные копии данных.</p></div>
+            <div class="card soft"><h4>Partitioning</h4><p class="tiny muted">Создаёт, удаляет и изменяет разделы накопителя.</p></div>
+            <div class="card soft"><h4>Мониторинг</h4><p class="tiny muted">Показывает загрузку CPU, RAM, GPU и других ресурсов.</p></div>
+            <div class="card soft"><h4>System Restore</h4><p class="tiny muted">Возвращает настройки и состояние системы к точке восстановления.</p></div>
+          </div>
+          <div class="callout exam" style="margin-top:14px">
+            <span class="callout-title">Как отвечать на ЕНТ</span>
+            Антивирус, архиватор и дефрагментатор — <b>утилиты</b> (разновидность системного ПО). Драйвер — системное ПО, но не утилита в узком смысле. Windows — ОС. Microsoft Word — прикладная программа.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Проверь себя: к какому типу относится ПО?</h2>
+          <p class="small muted" style="margin-top:4px">Помни: утилиты относим к системному ПО, потому что они обслуживают систему.</p>
+          <div class="sorter" data-sorter style="margin-top:14px">
+            <div class="sorter-pool" data-pool>
+              <button class="sort-item" draggable="true" data-answer="sys">Windows</button>
+              <button class="sort-item" draggable="true" data-answer="sys">Драйвер принтера</button>
+              <button class="sort-item" draggable="true" data-answer="sys">Антивирус</button>
+              <button class="sort-item" draggable="true" data-answer="sys">Архиватор</button>
+              <button class="sort-item" draggable="true" data-answer="app">Microsoft Word</button>
+              <button class="sort-item" draggable="true" data-answer="app">Google Chrome</button>
+              <button class="sort-item" draggable="true" data-answer="app">Photoshop</button>
+              <button class="sort-item" draggable="true" data-answer="app">Excel</button>
+              <button class="sort-item" draggable="true" data-answer="dev">PyCharm</button>
+              <button class="sort-item" draggable="true" data-answer="dev">Компилятор GCC</button>
+              <button class="sort-item" draggable="true" data-answer="dev">Отладчик GDB</button>
+              <button class="sort-item" draggable="true" data-answer="dev">Visual Studio Code</button>
+            </div>
+            <div class="sorter-zones">
+              <div class="sort-zone" data-zone="sys"><h4>Системное</h4><div class="zone-items"></div></div>
+              <div class="sort-zone" data-zone="app"><h4>Прикладное</h4><div class="zone-items"></div></div>
+              <div class="sort-zone" data-zone="dev"><h4>Инструментальное</h4><div class="zone-items"></div></div>
+            </div>
+            <div class="sorter-actions">
+              <button class="btn small primary" data-check>Проверить</button>
+              <button class="btn small ghost" data-reset>Сбросить</button>
+              <span class="sorter-result" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Прикладное ПО</h2>
+          <p class="small" style="margin-top:4px">Программы для конкретных задач пользователя.</p>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Категория</th><th>Примеры</th></tr></thead>
+              <tbody>
+                <tr><td>Текстовые редакторы</td><td>Microsoft Word, Google Docs</td></tr>
+                <tr><td>Электронные таблицы</td><td>Excel, LibreOffice Calc</td></tr>
+                <tr><td>Презентации</td><td>PowerPoint</td></tr>
+                <tr><td>Браузеры</td><td>Chrome, Firefox</td></tr>
+                <tr><td>Графические редакторы</td><td>Photoshop, GIMP</td></tr>
+                <tr><td>Видеоредакторы</td><td>DaVinci Resolve</td></tr>
+                <tr><td>СУБД</td><td>MySQL, PostgreSQL</td></tr>
+                <tr><td>Мультимедиа</td><td>VLC</td></tr>
+                <tr><td>Игры</td><td>Minecraft</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Инструментальное ПО</h2>
+            <p class="small" style="margin-top:4px">Средства разработки, проверки и отладки программ.</p>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Инструмент</th><th>Назначение</th></tr></thead>
+                <tbody>
+                  <tr><td>Visual Studio Code</td><td>Редактор кода</td></tr>
+                  <tr><td>PyCharm</td><td>IDE — интегрированная среда разработки</td></tr>
+                  <tr><td>GCC</td><td>Компилятор</td></tr>
+                  <tr><td>Python Interpreter</td><td>Интерпретатор</td></tr>
+                  <tr><td>GDB</td><td>Отладчик</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h2>Компилятор и интерпретатор</h2>
+            <p class="small" style="margin-top:4px"><b>Компилятор</b> переводит весь исходный код в машинный или промежуточный код до выполнения. <b>Интерпретатор</b> выполняет код по мере разбора.</p>
+            <div class="callout info" style="margin-top:10px">
+              <span class="callout-title">Не путай с прикладным ПО</span>
+              Word помогает писать текст, а IDE помогает писать код. IDE, компилятор и отладчик — инструменты разработчика, а не обычные пользовательские приложения.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Лицензии программного обеспечения</h2>
+          <p class="small" style="margin-top:4px">Бесплатность и открытость исходного кода — разные вещи.</p>
+          <div class="table-wrap" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Тип</th><th>Значение</th></tr></thead>
+              <tbody>
+                <tr><td><b>Freeware</b></td><td>Бесплатное использование, но код не обязательно открыт</td></tr>
+                <tr><td><b>Shareware</b></td><td>Ознакомительное распространение, часто с ограничениями или пробным периодом</td></tr>
+                <tr><td><b>Open Source</b></td><td>Исходный код доступен по условиям соответствующей лицензии</td></tr>
+                <tr><td><b>Proprietary</b></td><td>Проприетарное ПО с ограниченными правами использования и изменения</td></tr>
+                <tr><td><b>Commercial</b></td><td>Коммерческое ПО, распространяемое за плату</td></tr>
+                <tr><td><b>Public Domain</b></td><td>ПО, на которое не распространяются обычные авторские ограничения</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="callout tip">
+              <span class="callout-title">Примеры</span>
+              <ul class="small">
+                <li><b>Linux</b> — открытый исходный код.</li>
+                <li><b>Windows</b> — проприетарное ПО.</li>
+                <li><b>LibreOffice</b> — свободный офисный пакет с открытым кодом.</li>
+                <li><b>Google Chrome</b> — бесплатен для пользователя, но не является полностью открытым проектом.</li>
+              </ul>
+            </div>
+            <div class="callout bad">
+              <span class="callout-title">Ловушка ЕНТ</span>
+              <b>Freeware ≠ Open Source.</b> Программа может быть бесплатной, но закрытой. И наоборот: открытый код не всегда означает «без ограничений» — условия задаёт лицензия.
+            </div>
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по Software</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>К какому типу ПО относится антивирус?</summary><p>К системному, точнее — к утилитам (сервисным программам).</p></details>
+            <details class="qa"><summary>Чем драйвер отличается от утилиты?</summary><p>Драйвер обеспечивает связь ОС с конкретным устройством. Утилита обслуживает систему: диагностика, очистка, архивирование, резервное копирование.</p></details>
+            <details class="qa"><summary>Является ли Chrome свободным ПО?</summary><p>Браузер бесплатен для пользователя, но это не значит, что весь проект открыт. Freeware и Open Source — разные категории.</p></details>
+            <details class="qa"><summary>Что такое процесс?</summary><p>Программа, выполняющаяся в данный момент. ОС создаёт процесс, выделяет ресурсы и планирует его выполнение.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= NETWORKS ================= -->
+      <section class="section" id="networks" data-nav="Компьютерные сети" data-num="04" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>Компьютерные сети</h1>
+            <p class="lead">Зачем устройства объединяют в сеть, чем отличаются PAN, LAN, MAN и WAN, как устроены клиент-сервер и P2P, какие бывают топологии.</p>
+          </div>
+          <button class="mark-btn" data-mark="networks">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="def">
+            <span class="term">Компьютерная сеть</span> — совокупность двух или более устройств, соединённых каналами связи для обмена данными и совместного использования ресурсов.
+          </div>
+          <p class="small" style="margin-top:12px">В сеть могут входить компьютеры, ноутбуки, смартфоны, принтеры, серверы, камеры и устройства интернета вещей (IoT).</p>
+          <div class="grid-3" style="margin-top:14px">
+            <div class="card soft"><h4>Обмен данными</h4><p class="tiny muted">Сообщения, файлы, почта, видеозвонки.</p></div>
+            <div class="card soft"><h4>Общие ресурсы</h4><p class="tiny muted">Принтеры, файлы, базы данных, интернет.</p></div>
+            <div class="card soft"><h4>Удалённое управление</h4><p class="tiny muted">Доступ к серверам и устройствам, облачные сервисы.</p></div>
+          </div>
+          <div class="callout info" style="margin-top:14px">
+            <span class="callout-title">Пример</span>
+            В компьютерном классе 20 компьютеров подключены к одному коммутатору. Ученики пользуются общими файлами, принтером и выходят в интернет через маршрутизатор.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Классификация по масштабу</h2>
+          <p class="small" style="margin-top:4px">Это одна из самых частых тем в заданиях. Учись отличать масштаб, а не просто запоминать аббревиатуры.</p>
+          <div class="table-wrap" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Сеть</th><th>Полное название</th><th>Масштаб</th><th>Пример</th></tr></thead>
+              <tbody>
+                <tr><td><b>PAN</b></td><td>Personal Area Network</td><td>Персональный, несколько метров</td><td>Смартфон, умные часы и Bluetooth-наушники</td></tr>
+                <tr><td><b>LAN</b></td><td>Local Area Network</td><td>Комната, дом, офис, школа, здание</td><td>Компьютеры одного класса</td></tr>
+                <tr><td><b>MAN</b></td><td>Metropolitan Area Network</td><td>Город или крупная городская территория</td><td>Объединение сетей районов города</td></tr>
+                <tr><td><b>WAN</b></td><td>Wide Area Network</td><td>Страны, континенты, весь мир</td><td>Интернет, корпоративная сеть между филиалами</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="callout tip">
+              <span class="callout-title">Мнемоника</span>
+              <b>P</b>ersonal → <b>L</b>ocal → <b>M</b>etropolitan → <b>W</b>ide. От самого маленького масштаба к самому большому.
+            </div>
+            <div class="callout warn">
+              <span class="callout-title">Ловушки</span>
+              Домашняя сеть — <b>LAN</b>. Bluetooth-наушники и телефон — <b>PAN</b>. Сеть города — <b>MAN</b>. Интернет — крупнейший пример <b>WAN</b>, но не единственная WAN.
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <span class="badge accent">Client-Server</span>
+            <h2 style="margin-top:10px">Клиент-сервер</h2>
+            <p class="small" style="margin-top:6px"><b>Клиент</b> отправляет запрос на услугу или ресурс. <b>Сервер</b> предоставляет услуги, ресурсы и данные клиентам.</p>
+            <div class="steps" style="margin-top:12px">
+              <div class="step"><span class="step-num">1</span><div><h4>Запрос</h4><p>Браузер открывает сайт и отправляет запрос серверу.</p></div></div>
+              <div class="step"><span class="step-num">2</span><div><h4>Обработка</h4><p>Сервер принимает запрос и готовит ответ.</p></div></div>
+              <div class="step"><span class="step-num">3</span><div><h4>Ответ</h4><p>Данные возвращаются клиенту, браузер отображает страницу.</p></div></div>
+            </div>
+            <div class="callout tip" style="margin-top:12px">
+              <span class="callout-title">Плюс модели</span>
+              Централизованное управление доступом и ресурсами. Минус — сервер может стать узким местом.
+            </div>
+          </div>
+          <div class="card">
+            <span class="badge violet">Peer-to-Peer</span>
+            <h2 style="margin-top:10px">Одноранговая сеть · P2P</h2>
+            <p class="small" style="margin-top:6px">Устройства обмениваются данными напрямую, без обязательного выделенного центрального сервера. Каждый узел может быть и клиентом, и поставщиком ресурсов.</p>
+            <div class="card soft" style="margin-top:14px">
+              <h4>Пример</h4>
+              <p class="small muted">Два компьютера в одной сети напрямую передают файлы. В файлообменных P2P-сетях участники одновременно скачивают и раздают части файла.</p>
+            </div>
+            <div class="callout warn" style="margin-top:12px">
+              <span class="callout-title">Важно</span>
+              P2P не означает, что серверов не бывает вообще. Речь о принципе организации обмена: без обязательного центрального узла.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Типы серверов</h2>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Сервер</th><th>Назначение</th></tr></thead>
+              <tbody>
+                <tr><td><b>Web Server</b></td><td>Предоставляет веб-страницы</td></tr>
+                <tr><td><b>File Server</b></td><td>Хранит и предоставляет файлы</td></tr>
+                <tr><td><b>Mail Server</b></td><td>Обрабатывает электронную почту</td></tr>
+                <tr><td><b>Database Server</b></td><td>Предоставляет доступ к базам данных</td></tr>
+                <tr><td><b>DNS Server</b></td><td>Преобразует доменные имена в IP-адреса</td></tr>
+                <tr><td><b>DHCP Server</b></td><td>Выдаёт сетевые настройки устройствам</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <div>
+              <h2>Топологии сети</h2>
+              <p class="small muted" style="margin-top:4px">Топология — способ физического или логического соединения устройств. Выбери схему и сравни.</p>
+            </div>
+            <span class="badge">интерактив</span>
+          </div>
+          <div class="topo-tabs" id="topoTabs" style="margin-top:12px">
+            <button class="topo-tab active" data-topo="bus">Шина</button>
+            <button class="topo-tab" data-topo="star">Звезда</button>
+            <button class="topo-tab" data-topo="ring">Кольцо</button>
+            <button class="topo-tab" data-topo="tree">Дерево</button>
+            <button class="topo-tab" data-topo="mesh">Ячеистая</button>
+            <button class="topo-tab" data-topo="hybrid">Гибридная</button>
+          </div>
+          <div class="topo-panel active">
+            <div class="topo-canvas" id="topoCanvas" aria-live="polite"></div>
+            <div class="topo-info" id="topoInfo"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Сравнение топологий</h2>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Топология</th><th>Главная особенность</th><th>Слабое место</th></tr></thead>
+              <tbody>
+                <tr><td><b>Bus · шина</b></td><td>Один общий кабель</td><td>Повреждение магистрали может нарушить всю сеть</td></tr>
+                <tr><td><b>Star · звезда</b></td><td>Центральный узел, обычно коммутатор</td><td>Отказ центрального коммутатора</td></tr>
+                <tr><td><b>Ring · кольцо</b></td><td>Замкнутое кольцо, два соседа у каждого</td><td>В классической схеме разрыв одного соединения ломает кольцо</td></tr>
+                <tr><td><b>Tree · дерево</b></td><td>Иерархия из нескольких звёзд</td><td>Отказ верхнего узла затрагивает ветви</td></tr>
+                <tr><td><b>Mesh · ячеистая</b></td><td>Множество связей и альтернативные пути</td><td>Больше соединений и сложнее настройка</td></tr>
+                <tr><td><b>Hybrid · гибридная</b></td><td>Комбинация топологий</td><td>Сложность проектирования</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="callout exam">
+          <span class="callout-title">Что спрашивают чаще всего</span>
+          «Все устройства подключены к одному общему кабелю» → <b>шина</b>. «Центральный коммутатор» → <b>звезда</b>. «Каждый соединён с двумя соседями» → <b>кольцо</b>. «Несколько альтернативных путей, высокая отказоустойчивость» → <b>ячеистая</b>.
+        </div>
+      </section>
+
+      <!-- ================= EQUIPMENT ================= -->
+      <section class="section" id="equipment" data-nav="Сетевое оборудование" data-num="05" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>Сетевое оборудование</h1>
+            <p class="lead">Hub, switch, router, modem, access point и другие устройства. В заданиях часто дают описание — нужно узнать устройство по его функции и уровню работы.</p>
+          </div>
+          <button class="mark-btn" data-mark="equipment">Отметить изученным</button>
+        </div>
+
+        <div class="grid-3">
+          <div class="card soft">
+            <div class="spread"><h3>NIC</h3><span class="badge accent">адаптер</span></div>
+            <p class="small muted">Network Interface Card — аппаратный компонент, подключающий компьютер к сети. Бывает проводным (Ethernet) и беспроводным (Wi-Fi). У интерфейса есть MAC-адрес.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Hub</h3><span class="badge warn">L1</span></div>
+            <p class="small muted">Концентратор. Передаёт полученный сигнал на остальные порты, не анализируя MAC-адрес назначения. Все устройства — в общем домене коллизий.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Switch</h3><span class="badge good">L2</span></div>
+            <p class="small muted">Коммутатор. Пересылает Ethernet-кадры на основании MAC-адресов и запоминает, за каким портом находится устройство. Создаёт отдельный домен коллизий на каждом порту.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Router</h3><span class="badge violet">L3</span></div>
+            <p class="small muted">Маршрутизатор. Пересылает IP-пакеты между разными сетями, выбирая маршрут по IP-адресам и таблице маршрутизации. Часто выполняет NAT и DHCP.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Modem</h3><span class="badge">сигнал</span></div>
+            <p class="small muted">Модулятор-демодулятор. Преобразует сигналы для передачи данных по линии связи: DSL, кабельный, мобильный.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Access Point</h3><span class="badge accent">Wi-Fi</span></div>
+            <p class="small muted">Точка доступа. Подключает беспроводных клиентов к локальной сети и передаёт их данные в проводную LAN.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Repeater</h3><span class="badge">дальность</span></div>
+            <p class="small muted">Повторитель. Принимает сигнал и регенерирует или повторно передаёт его, увеличивая дальность связи. Wi-Fi-повторитель усиливает слабый сигнал.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Bridge</h3><span class="badge">сегменты</span></div>
+            <p class="small muted">Мост. Соединяет сегменты локальной сети и передаёт кадры по MAC-адресам. Обычно работает на канальном уровне.</p>
+          </div>
+          <div class="card soft">
+            <div class="spread"><h3>Gateway</h3><span class="badge warn">шлюз</span></div>
+            <p class="small muted">Шлюз. Обеспечивает связь между сетями или системами, иногда с разными протоколами. Default Gateway — адрес маршрутизатора для пакетов в другие сети.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Главное сравнение</h2>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Устройство</th><th>Основная функция</th><th>На что смотреть в вопросе</th></tr></thead>
+              <tbody>
+                <tr><td><b>Hub</b></td><td>Рассылает сигнал по портам</td><td>«Не анализирует адрес», «всем портам»</td></tr>
+                <tr><td><b>Switch</b></td><td>Пересылает кадры по MAC</td><td>MAC-адрес, канальный уровень, порт</td></tr>
+                <tr><td><b>Router</b></td><td>Маршрутизирует пакеты по IP</td><td>IP-адрес, разные сети, таблица маршрутизации</td></tr>
+                <tr><td><b>Modem</b></td><td>Преобразует сигналы для линии связи</td><td>Модуляция/демодуляция, провайдер</td></tr>
+                <tr><td><b>Access Point</b></td><td>Подключает Wi-Fi-устройства</td><td>Беспроводные клиенты, радиоканал</td></tr>
+                <tr><td><b>Repeater</b></td><td>Усиливает/регенерирует сигнал</td><td>Дальность, слабый сигнал</td></tr>
+                <tr><td><b>Bridge</b></td><td>Соединяет сегменты LAN</td><td>Два сегмента, MAC</td></tr>
+                <tr><td><b>Gateway</b></td><td>Связывает сети или системы</td><td>Разные протоколы, выход из сети</td></tr>
+                <tr><td><b>NIC</b></td><td>Подключает компьютер к сети</td><td>Сетевой адаптер, MAC</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout warn" style="margin-top:12px">
+            <span class="callout-title">Ловушка ЕНТ</span>
+            <b>Switch</b> работает с MAC-адресами, <b>router</b> — с IP-адресами. Если в описании упоминается MAC или Ethernet-кадр — это коммутатор. Если IP, маршрут или разные сети — маршрутизатор.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <div>
+              <h2>Симулятор: Hub vs Switch</h2>
+              <p class="small muted" style="margin-top:4px">Отправь кадр от PC1 к PC2 и посмотри, кто его получит.</p>
+            </div>
+            <span class="badge accent">интерактив</span>
+          </div>
+          <div class="sim-controls" style="margin-top:12px">
+            <div class="seg" data-sim-mode role="group" aria-label="Тип устройства">
+              <button class="active" data-mode="hub">Hub</button>
+              <button data-mode="switch">Switch</button>
+            </div>
+            <button class="btn small primary" data-sim-send>Отправить кадр PC1 → PC2</button>
+            <button class="btn small ghost" data-sim-reset>Сброс</button>
+          </div>
+          <div class="sim-stage">
+            <svg viewBox="0 0 760 340" role="img" aria-label="Схема сети: PC1, сетевое устройство, PC2 и PC3">
+              <line id="simLink1" class="sim-link" x1="150" y1="170" x2="320" y2="170"></line>
+              <line id="simLink2" class="sim-link" x1="440" y1="170" x2="580" y2="92"></line>
+              <line id="simLink3" class="sim-link" x1="440" y1="170" x2="580" y2="248"></line>
+
+              <rect class="sim-node-box sender" x="40" y="138" width="110" height="64" rx="10"></rect>
+              <text class="sim-label" x="95" y="164">PC1</text>
+              <text class="sim-sub" x="95" y="181">MAC: AA:01</text>
+
+              <rect class="sim-node-box" id="simDeviceBox" x="320" y="130" width="120" height="80" rx="12"></rect>
+              <text class="sim-label" id="simDeviceName" x="380" y="162">HUB</text>
+              <text class="sim-sub" id="simDeviceSub" x="380" y="180">L1 · рассылает всем</text>
+
+              <rect class="sim-node-box recv" x="585" y="60" width="130" height="64" rx="10"></rect>
+              <text class="sim-label" x="650" y="86">PC2</text>
+              <text class="sim-sub" x="650" y="103">MAC: BB:02</text>
+
+              <rect class="sim-node-box recv" x="585" y="216" width="130" height="64" rx="10"></rect>
+              <text class="sim-label" x="650" y="242">PC3</text>
+              <text class="sim-sub" x="650" y="259">MAC: CC:03</text>
+
+              <circle id="simPacket" class="sim-packet" cx="150" cy="170" r="6" opacity="0"></circle>
+            </svg>
+          </div>
+          <div class="sim-log" data-sim-log aria-live="polite">Выбери устройство и нажми «Отправить кадр».</div>
+        </div>
+
+        <div class="card">
+          <h2>Домашняя сеть: упрощённая схема</h2>
+          <div class="net-chain" style="margin-top:14px">
+            <div class="chain-node"><b>Интернет</b><span>WAN</span></div>
+            <span class="chain-arrow">→</span>
+            <div class="chain-node"><b>Модем / терминал</b><span>линия провайдера</span></div>
+            <span class="chain-arrow">→</span>
+            <div class="chain-node accent"><b>Router</b><span>маршрутизация + NAT</span></div>
+            <span class="chain-arrow">→</span>
+            <div class="chain-node"><b>Switch / Wi-Fi AP</b><span>локальная сеть</span></div>
+            <span class="chain-arrow">→</span>
+            <div class="chain-node"><b>ПК · ноутбук · телефон</b><span>клиенты</span></div>
+          </div>
+          <p class="small muted" style="margin-top:12px">В домашних роутерах модем, маршрутизатор, коммутатор и точка доступа часто объединены в одном корпусе. На экзамене важно различать <em>функции</em>, даже если физически это одно устройство.</p>
+          <div class="callout info" style="margin-top:12px">
+            <span class="callout-title">NAT</span>
+            <b>Network Address Translation</b> — механизм преобразования адресов. Позволяет множеству устройств домашней сети выходить в интернет через один публичный IPv4-адрес.
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по оборудованию</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>Hub анализирует MAC-адрес?</summary><p>Нет. Он повторяет сигнал на остальные порты. MAC-адреса использует коммутатор (switch).</p></details>
+            <details class="qa"><summary>Чем modem отличается от router?</summary><p>Модем преобразует сигналы для линии связи. Маршрутизатор пересылает IP-пакеты между сетями и выбирает маршрут.</p></details>
+            <details class="qa"><summary>Что такое default gateway?</summary><p>Адрес маршрутизатора, которому устройство отправляет пакеты, предназначенные для других сетей.</p></details>
+            <details class="qa"><summary>Сколько доменов коллизий у коммутатора?</summary><p>Отдельный домен коллизий на каждом порту. У классического hub все порты в одном домене.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= TRANSMISSION & PROTOCOLS ================= -->
+      <section class="section" id="transmission" data-nav="Передача данных и протоколы" data-num="06" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>Каналы связи и протоколы</h1>
+            <p class="lead">По чему передаются данные — кабель, оптоволокно или радиосигнал. И по каким правилам — HTTP, DNS, DHCP, TCP, UDP и другие протоколы.</p>
+          </div>
+          <button class="mark-btn" data-mark="transmission">Отметить изученным</button>
+        </div>
+
+        <div class="card">
+          <h2>Проводная связь</h2>
+          <div class="grid-3" style="margin-top:12px">
+            <div class="card soft">
+              <h4>Витая пара · Twisted Pair</h4>
+              <p class="tiny muted">Скрученные попарно медные проводники. Основа Ethernet-сетей. Бывает UTP (без экрана) и STP (экранированная). Разъём 8P8C, часто называют RJ-45.</p>
+            </div>
+            <div class="card soft">
+              <h4>Коаксиальный кабель</h4>
+              <p class="tiny muted">Центральный проводник, изоляция, экран и внешняя оболочка. Применяется в кабельном телевидении и некоторых сетях доступа.</p>
+            </div>
+            <div class="card soft">
+              <h4>Оптоволокно · Fiber</h4>
+              <p class="tiny muted">Передаёт данные светом. Высокая пропускная способность, большие расстояния, устойчивость к электромагнитным помехам.</p>
+            </div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Среда</th><th>Сигнал</th><th>Сильные стороны</th><th>Ограничения</th></tr></thead>
+              <tbody>
+                <tr><td>Витая пара</td><td>Электрический</td><td>Дёшево, просто, массово</td><td>Помехи, ограниченная длина</td></tr>
+                <tr><td>Коаксиал</td><td>Электрический</td><td>Экранирование, исторические сети и ТВ</td><td>Общая среда, уступает витой паре в LAN</td></tr>
+                <tr><td>Оптоволокно</td><td>Оптический (свет)</td><td>Скорость, дальность, невосприимчивость к EMI</td><td>Дороже, сложнее монтаж</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Беспроводная связь</h2>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Технология</th><th>Применение</th></tr></thead>
+              <tbody>
+                <tr><td><b>Wi-Fi</b></td><td>Локальные беспроводные сети</td></tr>
+                <tr><td><b>Bluetooth</b></td><td>Связь устройств на небольших расстояниях</td></tr>
+                <tr><td><b>NFC</b></td><td>Бесконтактное взаимодействие на очень близком расстоянии</td></tr>
+                <tr><td><b>Infrared</b></td><td>Инфракрасная передача данных</td></tr>
+                <tr><td><b>Cellular</b></td><td>Мобильная связь</td></tr>
+                <tr><td><b>Satellite</b></td><td>Спутниковая связь</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout tip" style="margin-top:12px">
+            <span class="callout-title">Сравнение</span>
+            Проводная связь обычно стабильнее и защищённее от помех. Беспроводная удобнее, но зависит от расстояния, препятствий и радиопомех.
+          </div>
+        </div>
+
+        <div class="card pad-lg">
+          <h2>Что такое сетевой протокол?</h2>
+          <div class="def" style="margin-top:10px">
+            <span class="term">Сетевой протокол</span> — набор правил и соглашений, определяющих порядок обмена данными между устройствами в сети.
+          </div>
+          <p class="small" style="margin-top:10px">Протоколы определяют формат сообщений, адресацию, порядок передачи, проверку ошибок, установление соединения и обработку полученных данных.</p>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Протокол</th><th>Назначение</th></tr></thead>
+              <tbody>
+                <tr><td><b>HTTP</b></td><td>Передача веб-данных</td></tr>
+                <tr><td><b>HTTPS</b></td><td>Защищённая передача веб-данных</td></tr>
+                <tr><td><b>FTP</b></td><td>Передача файлов</td></tr>
+                <tr><td><b>SFTP</b></td><td>Передача файлов через SSH</td></tr>
+                <tr><td><b>SMTP</b></td><td>Отправка электронной почты</td></tr>
+                <tr><td><b>POP3</b></td><td>Получение электронной почты</td></tr>
+                <tr><td><b>IMAP</b></td><td>Работа с почтой на сервере и синхронизация</td></tr>
+                <tr><td><b>DNS</b></td><td>Преобразование доменных имён в IP-адреса</td></tr>
+                <tr><td><b>DHCP</b></td><td>Автоматическая выдача сетевых настроек</td></tr>
+                <tr><td><b>TCP</b></td><td>Надёжная передача данных</td></tr>
+                <tr><td><b>UDP</b></td><td>Передача датаграмм без гарантии доставки</td></tr>
+                <tr><td><b>IP</b></td><td>Адресация и маршрутизация пакетов</td></tr>
+                <tr><td><b>SSH</b></td><td>Защищённый удалённый доступ</td></tr>
+                <tr><td><b>ICMP</b></td><td>Служебные сообщения и диагностика сети</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h2>HTTP и HTTPS</h2>
+            <p class="small" style="margin-top:6px"><b>HTTP</b> — протокол передачи гипертекста, взаимодействие браузера и веб-сервера. <b>HTTPS</b> — тот же протокол, но с защитой TLS.</p>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>HTTP</th><th>HTTPS</th></tr></thead>
+                <tbody>
+                  <tr><td>Без TLS</td><td>Использует TLS</td></tr>
+                  <tr><td>Данные не защищены на транспортном уровне</td><td>Шифрование и аутентификация соединения</td></tr>
+                  <tr><td>Обычно порт 80</td><td>Обычно порт 443</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h2>FTP и SSH</h2>
+            <p class="small" style="margin-top:6px"><b>FTP</b> — передача файлов между клиентом и сервером, классически порты TCP 20 и 21. Обычный FTP не шифрует содержимое.</p>
+            <p class="small"><b>SSH</b> — безопасный удалённый доступ к компьютерам и управление ими. SFTP передаёт файлы через SSH.</p>
+            <div class="callout warn" style="margin-top:10px">
+              <span class="callout-title">Ловушка</span>
+              FTP и SFTP — не одно и то же. SFTP работает через SSH и защищён, обычный FTP — нет.
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>DNS</h2>
+            <p class="small" style="margin-top:6px"><b>Domain Name System</b> позволяет находить IP-адрес по доменному имени. Людям удобно запоминать <code>google.com</code>, а сети нужен IP-адрес.</p>
+            <div class="callout info" style="margin-top:10px">
+              <span class="callout-title">Пример</span>
+              <code>google.com → 142.250.x.x</code>. DNS-сервер возвращает адрес, и браузер знает, куда отправлять запрос.
+            </div>
+          </div>
+          <div class="card">
+            <h2>DHCP и DORA</h2>
+            <p class="small" style="margin-top:6px"><b>Dynamic Host Configuration Protocol</b> автоматически выдаёт IP-адрес, маску, шлюз и DNS-серверы.</p>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Этап</th><th>Смысл</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Discover</b></td><td>Клиент ищет DHCP-сервер</td></tr>
+                  <tr><td><b>Offer</b></td><td>Сервер предлагает настройки</td></tr>
+                  <tr><td><b>Request</b></td><td>Клиент запрашивает предложенное</td></tr>
+                  <tr><td><b>Ack</b></td><td>Сервер подтверждает выдачу</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="tiny muted" style="margin-top:8px">Подключился к Wi-Fi — роутер автоматически выдал телефону IP.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>TCP и UDP</h2>
+          <div class="grid-2" style="margin-top:10px">
+            <div class="card soft">
+              <h4>TCP · Transmission Control Protocol</h4>
+              <p class="small muted">Устанавливает соединение, контролирует доставку, повторно отправляет потерянные данные, сохраняет порядок и управляет потоком.</p>
+              <p class="tiny" style="margin-top:8px;color:var(--accent)">Где: веб-страницы, файлы, почта — когда важна полнота.</p>
+            </div>
+            <div class="card soft">
+              <h4>UDP · User Datagram Protocol</h4>
+              <p class="small muted">Передаёт датаграммы без обязательного соединения и без гарантии доставки. Меньше служебных механизмов.</p>
+              <p class="tiny" style="margin-top:8px;color:var(--accent-2)">Где: онлайн-игры, видеозвонки, потоковое видео, DNS-запросы.</p>
+            </div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>TCP</th><th>UDP</th></tr></thead>
+              <tbody>
+                <tr><td>Соединение устанавливается</td><td>Нет обязательного установления соединения</td></tr>
+                <tr><td>Контроль доставки</td><td>Нет гарантии доставки</td></tr>
+                <tr><td>Сохраняет порядок байтов</td><td>Нет гарантии порядка датаграмм</td></tr>
+                <tr><td>Больше служебных механизмов</td><td>Меньше накладных расходов</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout warn" style="margin-top:12px">
+            <span class="callout-title">Ловушка</span>
+            UDP не обязательно «быстрее TCP во всех ситуациях». Его главное отличие — отсутствие встроенной гарантии доставки и порядка. TCP надёжен, но за счёт дополнительных механизмов.
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Почтовые протоколы</h2>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Протокол</th><th>Функция</th></tr></thead>
+                <tbody>
+                  <tr><td><b>SMTP</b></td><td>Отправка писем</td></tr>
+                  <tr><td><b>POP3</b></td><td>Получение писем</td></tr>
+                  <tr><td><b>IMAP</b></td><td>Получение и синхронизация с сервером</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout tip" style="margin-top:10px">
+              <span class="callout-title">Запомни</span>
+              <b>SMTP</b> — отправить. <b>POP3</b> — получить. <b>IMAP</b> — получать и синхронизировать почту на нескольких устройствах.
+            </div>
+          </div>
+          <div class="card">
+            <h2>ICMP</h2>
+            <p class="small" style="margin-top:6px"><b>Internet Control Message Protocol</b> передаёт служебные сообщения об ошибках и состоянии сети. Утилита <code>ping</code> использует ICMP Echo Request и Echo Reply в IPv4.</p>
+            <div class="callout info" style="margin-top:10px">
+              <span class="callout-title">Не путай</span>
+              ICMP — диагностика сети, а не передача веб-страниц. Веб-страницы — HTTP/HTTPS.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Классические порты для ориентира</h2>
+          <p class="small muted" style="margin-top:4px">Порты помогают различать службы. На ЕНТ чаще спрашивают назначение протокола, но порты полезно знать.</p>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Порт</th><th>Протокол / служба</th><th>Порт</th><th>Протокол / служба</th></tr></thead>
+              <tbody>
+                <tr><td>20/21</td><td>FTP</td><td>53</td><td>DNS</td></tr>
+                <tr><td>22</td><td>SSH / SFTP</td><td>67/68</td><td>DHCP</td></tr>
+                <tr><td>25</td><td>SMTP</td><td>80</td><td>HTTP</td></tr>
+                <tr><td>110</td><td>POP3</td><td>443</td><td>HTTPS</td></tr>
+                <tr><td>143</td><td>IMAP</td><td>993</td><td>IMAPS (TLS)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <div>
+              <h2>Тренажёр: протокол → назначение</h2>
+              <p class="small muted" style="margin-top:4px">Нажми протокол слева, затем его назначение справа. Правильные пары закрепятся.</p>
+            </div>
+            <span class="badge accent">интерактив</span>
+          </div>
+          <div class="matcher" data-matcher style="margin-top:14px">
+            <div class="match-col" data-match-left>
+              <button class="match-item" data-key="dns"><b>DNS</b></button>
+              <button class="match-item" data-key="dhcp"><b>DHCP</b></button>
+              <button class="match-item" data-key="http"><b>HTTP</b></button>
+              <button class="match-item" data-key="https"><b>HTTPS</b></button>
+              <button class="match-item" data-key="ftp"><b>FTP</b></button>
+              <button class="match-item" data-key="smtp"><b>SMTP</b></button>
+              <button class="match-item" data-key="imap"><b>IMAP</b></button>
+              <button class="match-item" data-key="tcp"><b>TCP</b></button>
+              <button class="match-item" data-key="udp"><b>UDP</b></button>
+              <button class="match-item" data-key="ssh"><b>SSH</b></button>
+            </div>
+            <div class="match-col" data-match-right>
+              <button class="match-item" data-key="tcp">Надёжная передача с установлением соединения</button>
+              <button class="match-item" data-key="dns">Преобразование доменного имени в IP-адрес</button>
+              <button class="match-item" data-key="smtp">Отправка электронной почты</button>
+              <button class="match-item" data-key="udp">Передача датаграмм без гарантии доставки</button>
+              <button class="match-item" data-key="dhcp">Автоматическая выдача IP и сетевых настроек</button>
+              <button class="match-item" data-key="https">Защищённая передача веб-данных через TLS</button>
+              <button class="match-item" data-key="ftp">Передача файлов между клиентом и сервером</button>
+              <button class="match-item" data-key="ssh">Безопасный удалённый доступ к компьютеру</button>
+              <button class="match-item" data-key="http">Передача веб-страниц без TLS</button>
+              <button class="match-item" data-key="imap">Получение почты с синхронизацией на сервере</button>
+            </div>
+            <div class="matcher-foot">
+              <button class="btn small ghost" data-match-reset>Сбросить</button>
+              <span class="match-status" data-match-status aria-live="polite">Соединено 0 из 10.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout exam">
+          <span class="callout-title">Словарь формулировок</span>
+          «Автоматически получает IP» → <b>DHCP</b>. «Имя сайта → IP» → <b>DNS</b>. «Защищённый веб» → <b>HTTPS</b>. «Отправить письмо» → <b>SMTP</b>. «Получить и синхронизировать» → <b>IMAP</b>. «Надёжно, с соединением» → <b>TCP</b>. «Без гарантии доставки» → <b>UDP</b>.
+        </div>
+      </section>
+
+      <!-- ================= ADDRESSING ================= -->
+      <section class="section" id="addressing" data-nav="IP, MAC и подсети" data-num="07" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>IP-адресация и MAC-адреса</h1>
+            <p class="lead">Логический IP, аппаратный MAC, частные диапазоны, маски и CIDR. Здесь появляются расчётные задания — разберём их по шагам.</p>
+          </div>
+          <button class="mark-btn" data-mark="addressing">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="def">
+            <span class="term">IP-адрес</span> — логический сетевой адрес, который идентифицирует интерфейс в IP-сети и используется для доставки IP-пакетов.
+          </div>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="card soft">
+              <div class="spread"><h3>IPv4</h3><span class="badge accent">32 бита</span></div>
+              <p class="small muted">Записывается четырьмя десятичными числами через точку. Каждая часть — октет, 8 бит, диапазон 0–255.</p>
+              <p class="mono" style="margin-top:8px;color:var(--accent)">192.168.1.10</p>
+              <p class="tiny muted" style="margin-top:6px">Всего 2³² = 4 294 967 296 комбинаций.</p>
+            </div>
+            <div class="card soft">
+              <div class="spread"><h3>IPv6</h3><span class="badge violet">128 бит</span></div>
+              <p class="small muted">Записывается в шестнадцатеричном формате через двоеточия. Разработан в том числе из-за нехватки IPv4-адресов.</p>
+              <p class="mono" style="margin-top:8px;color:var(--accent-2)">2001:db8:abcd:12::1</p>
+              <p class="tiny muted" style="margin-top:6px">Количество адресов: 2¹²⁸.</p>
+            </div>
+          </div>
+          <div class="callout tip" style="margin-top:14px">
+            <span class="callout-title">Октеты</span>
+            В IPv4 четыре октета по 8 бит. Именно поэтому каждое число не может быть больше 255: 8 бит вмещают значения от 0 до 255.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>MAC-адрес</h2>
+          <p class="small" style="margin-top:6px"><b>Media Access Control Address</b> — адрес сетевого интерфейса, используемый на канальном уровне для взаимодействия в локальном сегменте. Обычно 48 бит, записывается шестью парами hex-цифр.</p>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="card soft"><p class="mono" style="font-size:16px;color:var(--accent)">A4:5E:60:12:34:56</p><p class="tiny muted" style="margin-top:6px">48 бит = 6 байт. Первые 3 байта часто идентифицируют производителя, последние — интерфейс.</p></div>
+            <div class="callout warn"><span class="callout-title">Может меняться</span>MAC обычно привязан к интерфейсу, но его можно изменить программно. IP меняется при смене сети или выдаче DHCP.</div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>IP</th><th>MAC</th></tr></thead>
+              <tbody>
+                <tr><td>Логический адрес</td><td>Адрес канального уровня</td></tr>
+                <tr><td>Используется IP-протоколом</td><td>Используется Ethernet и другими технологиями канального уровня</td></tr>
+                <tr><td>32 бита в IPv4</td><td>Обычно 48 бит в Ethernet</td></tr>
+                <tr><td>Может меняться при смене сети</td><td>Обычно связан с интерфейсом, но может быть изменён программно</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout exam" style="margin-top:12px">
+            <span class="callout-title">Ловушка ЕНТ</span>
+            <b>Switch</b> использует MAC, <b>router</b> — IP. IP относится к сетевому уровню, MAC — к канальному.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Частные и публичные IPv4-адреса</h2>
+          <div class="grid-2" style="margin-top:12px">
+            <div>
+              <h3>Private IP</h3>
+              <p class="small muted">Адреса для использования внутри частных сетей. Напрямую через публичный интернет не маршрутизируются.</p>
+              <div class="table-wrap compact" style="margin-top:10px">
+                <table>
+                  <thead><tr><th>Диапазон</th><th>Префикс</th></tr></thead>
+                  <tbody>
+                    <tr><td>10.0.0.0 – 10.255.255.255</td><td>/8</td></tr>
+                    <tr><td>172.16.0.0 – 172.31.255.255</td><td>/12</td></tr>
+                    <tr><td>192.168.0.0 – 192.168.255.255</td><td>/16</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <h3>Public IP</h3>
+              <p class="small muted">Используется для маршрутизации в публичном интернете. Домашние устройства часто выходят наружу через NAT и один публичный адрес роутера.</p>
+              <div class="callout info" style="margin-top:10px">
+                <span class="callout-title">Примеры</span>
+                <code>192.168.1.1</code>, <code>10.0.0.5</code>, <code>172.16.1.20</code> — частные. <code>8.8.8.8</code>, <code>195.114.56.10</code> — публичные.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Маска подсети и CIDR</h2>
+          <p class="small" style="margin-top:6px"><b>Маска подсети</b> — 32-битное значение, которое определяет, какая часть IPv4-адреса относится к сети, а какая — к узлу.</p>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="card soft">
+              <p class="small muted">IP:</p>
+              <p class="mono" style="color:var(--accent)">192.168.1.10</p>
+              <p class="small muted" style="margin-top:8px">Маска:</p>
+              <p class="mono" style="color:var(--accent-2)">255.255.255.0</p>
+              <p class="small muted" style="margin-top:8px">CIDR:</p>
+              <p class="mono" style="color:var(--text)">192.168.1.10/24</p>
+            </div>
+            <div class="card soft">
+              <p class="small">24 бита — часть сети, 8 бит — часть узла.</p>
+              <p class="small" style="margin-top:8px">Всего адресов: 2⁸ = 256.</p>
+              <p class="small" style="margin-top:8px">Обычно для узлов доступно 254: адрес сети и широковещательный адрес зарезервированы.</p>
+              <p class="tiny" style="margin-top:8px;color:var(--warn)">Исключения: /31 и /32 — особые случаи, см. калькулятор.</p>
+            </div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>CIDR</th><th>Маска</th><th>CIDR</th><th>Маска</th></tr></thead>
+              <tbody>
+                <tr><td>/8</td><td>255.0.0.0</td><td>/27</td><td>255.255.255.224</td></tr>
+                <tr><td>/16</td><td>255.255.0.0</td><td>/28</td><td>255.255.255.240</td></tr>
+                <tr><td>/24</td><td>255.255.255.0</td><td>/29</td><td>255.255.255.248</td></tr>
+                <tr><td>/25</td><td>255.255.255.128</td><td>/30</td><td>255.255.255.252</td></tr>
+                <tr><td>/26</td><td>255.255.255.192</td><td>/31 · /32</td><td>255.255.255.254 · 255.255.255.255</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <div>
+              <h2>Калькулятор подсети</h2>
+              <p class="small muted" style="margin-top:4px">Введи IPv4 и префикс — увидишь адрес сети, broadcast, диапазон и количество узлов.</p>
+            </div>
+            <span class="badge accent">интерактив</span>
+          </div>
+          <div class="calc-form" style="margin-top:14px">
+            <div class="field">
+              <label for="calcIp">IPv4-адрес</label>
+              <input id="calcIp" value="192.168.1.10" inputmode="decimal" spellcheck="false" autocomplete="off">
+            </div>
+            <div class="field" style="max-width:130px">
+              <label for="calcPrefix">Префикс</label>
+              <input id="calcPrefix" type="number" min="0" max="32" value="24" inputmode="numeric">
+            </div>
+            <button class="btn primary" id="calcBtn">Рассчитать</button>
+          </div>
+          <p class="calc-error" id="calcError" aria-live="polite"></p>
+          <div class="row" style="gap:6px;margin-bottom:12px">
+            <span class="tiny muted">Примеры:</span>
+            <button class="chip" data-preset="192.168.1.10/24">192.168.1.10/24</button>
+            <button class="chip" data-preset="195.114.56.10/29">195.114.56.10/29</button>
+            <button class="chip" data-preset="10.0.0.1/8">10.0.0.1/8</button>
+            <button class="chip" data-preset="172.16.5.4/12">172.16.5.4/12</button>
+          </div>
+          <div class="calc-results" id="calcResults"></div>
+          <div class="bits" id="calcBits" aria-label="Двоичное представление адреса"></div>
+          <div class="bit-legend"><span><i class="net"></i>биты сети</span><span><i class="host"></i>биты узла</span></div>
+          <div class="callout info" style="margin-top:12px" id="calcExplain">
+            Формула: количество адресов = 2<sup>(32 − префикс)</sup>. Для обычных подсетей два адреса резервируются: сеть и broadcast.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Путь запроса к сайту</h2>
+          <div class="steps" style="margin-top:12px">
+            <div class="step"><span class="step-num">1</span><div><h4>Ввод адреса</h4><p>Ты вводишь <code>example.com</code> в браузере.</p></div></div>
+            <div class="step"><span class="step-num">2</span><div><h4>DNS</h4><p>DNS помогает найти IP-адрес сервера по доменному имени.</p></div></div>
+            <div class="step"><span class="step-num">3</span><div><h4>Маршрут</h4><p>Компьютер решает, куда отправить пакет. Если адрес в другой сети — через шлюз.</p></div></div>
+            <div class="step"><span class="step-num">4</span><div><h4>Передача</h4><p>Маршрутизаторы пересылают пакет по сети, пока он не дойдёт до сервера.</p></div></div>
+            <div class="step"><span class="step-num">5</span><div><h4>Ответ</h4><p>Сервер обрабатывает запрос и возвращает данные клиенту. Браузер отображает страницу.</p></div></div>
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по адресации</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>Сколько бит в IPv4 и IPv6?</summary><p>IPv4 — 32 бита, IPv6 — 128 бит. MAC в Ethernet — обычно 48 бит.</p></details>
+            <details class="qa"><summary>Сколько адресов в сети /24?</summary><p>2⁸ = 256 всего, обычно 254 доступно для узлов.</p></details>
+            <details class="qa"><summary>Какие адреса частные?</summary><p>10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.</p></details>
+            <details class="qa"><summary>Кто использует MAC, а кто IP?</summary><p>Коммутатор — MAC, маршрутизатор — IP.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= OSI ================= -->
+      <section class="section" id="osi" data-nav="OSI и TCP/IP" data-num="08" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>Модель OSI и стек TCP/IP</h1>
+            <p class="lead">Семь уровней OSI объясняют, как данные проходят от приложения до физического сигнала. Это каркас, который связывает протоколы, устройства и адреса.</p>
+          </div>
+          <button class="mark-btn" data-mark="osi">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="def">
+            <span class="term">OSI (Open Systems Interconnection)</span> — семиуровневая эталонная модель взаимодействия открытых систем. Она описывает, как данные передаются между сетевыми устройствами.
+          </div>
+          <p class="small" style="margin-top:10px">Выбери уровень — увидишь функции, протоколы, устройства и единицу данных.</p>
+          <div class="osi-layout" data-osi style="margin-top:16px">
+            <div class="osi-stack" id="osiStack" role="tablist" aria-label="Уровни модели OSI"></div>
+            <div class="card soft osi-detail" id="osiDetail" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Как запомнить порядок</h2>
+            <p class="small" style="margin-top:6px">Сверху вниз:</p>
+            <p class="small" style="margin-top:4px"><b>A</b>ll <b>P</b>eople <b>S</b>eem <b>T</b>o <b>N</b>eed <b>D</b>ata <b>P</b>rocessing.</p>
+            <p class="small" style="margin-top:8px">Снизу вверх:</p>
+            <p class="small"><b>P</b>lease <b>D</b>o <b>N</b>ot <b>T</b>hrow <b>S</b>ausage <b>P</b>izza <b>A</b>way.</p>
+            <div class="callout tip" style="margin-top:10px">
+              <span class="callout-title">По-русски</span>
+              Прикладной → Представления → Сеансовый → Транспортный → Сетевой → Канальный → Физический.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Единицы данных · PDU</h2>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Уровень</th><th>Единица</th></tr></thead>
+                <tbody>
+                  <tr><td>Application</td><td>Data · данные</td></tr>
+                  <tr><td>Transport (TCP)</td><td>Segment · сегмент</td></tr>
+                  <tr><td>Transport (UDP)</td><td>Datagram · датаграмма</td></tr>
+                  <tr><td>Network (IP)</td><td>Packet · пакет</td></tr>
+                  <tr><td>Data Link (Ethernet)</td><td>Frame · кадр</td></tr>
+                  <tr><td>Physical</td><td>Bits · биты</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Инкапсуляция данных</h2>
+          <p class="small" style="margin-top:4px">При отправке данные обрастают заголовками сверху вниз. При получении — декапсулируются снизу вверх.</p>
+          <div class="encap-flow" data-encap-flow style="margin-top:14px">
+            <span class="encap-step" data-step="0">Данные</span>
+            <span class="encap-arrow">→</span>
+            <span class="encap-step" data-step="1">Сегмент / датаграмма</span>
+            <span class="encap-arrow">→</span>
+            <span class="encap-step" data-step="2">Пакет</span>
+            <span class="encap-arrow">→</span>
+            <span class="encap-step" data-step="3">Кадр</span>
+            <span class="encap-arrow">→</span>
+            <span class="encap-step" data-step="4">Биты</span>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn small primary" data-encap-play>▶ Инкапсуляция</button>
+            <button class="btn small" data-encap-reverse>↩ Декапсуляция</button>
+            <button class="btn small ghost" data-encap-reset>Сброс</button>
+          </div>
+          <div class="encap-status" data-encap-status>Нажми кнопку, чтобы увидеть путь данных по уровням.</div>
+        </div>
+
+        <div class="card">
+          <h2>Модель TCP/IP</h2>
+          <p class="small" style="margin-top:4px">Практическая архитектура протоколов, лежащая в основе интернета. Часто изображается четырьмя уровнями.</p>
+          <div class="table-wrap" style="margin-top:12px">
+            <table>
+              <thead><tr><th>TCP/IP</th><th>Уровни OSI</th><th>Примеры</th></tr></thead>
+              <tbody>
+                <tr><td><b>Application</b></td><td>7, 6, 5</td><td>HTTP, DNS, SMTP, FTP</td></tr>
+                <tr><td><b>Transport</b></td><td>4</td><td>TCP, UDP</td></tr>
+                <tr><td><b>Internet</b></td><td>3</td><td>IP, ICMP</td></tr>
+                <tr><td><b>Network Access</b></td><td>2, 1</td><td>Ethernet, Wi-Fi, MAC</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info" style="margin-top:12px">
+            <span class="callout-title">Важно</span>
+            OSI — эталонная модель из семи уровней. TCP/IP — модель протокольной архитектуры, обычно из четырёх уровней. Это не одно и то же, хотя уровни соотносятся.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Устройства и протоколы по уровням</h2>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Уровень</th><th>Протоколы</th><th>Устройства / примеры</th></tr></thead>
+              <tbody>
+                <tr><td>7 · Application</td><td>HTTP, HTTPS, DNS, SMTP, FTP</td><td>Браузер, веб-сервер</td></tr>
+                <tr><td>6 · Presentation</td><td>Форматы, кодирование, шифрование, сжатие</td><td>TLS, форматы изображений</td></tr>
+                <tr><td>5 · Session</td><td>Управление сеансами</td><td>Сессии приложений</td></tr>
+                <tr><td>4 · Transport</td><td>TCP, UDP</td><td>Порты, сокеты</td></tr>
+                <tr><td>3 · Network</td><td>IP, ICMP</td><td>Router</td></tr>
+                <tr><td>2 · Data Link</td><td>Ethernet, MAC</td><td>Switch, bridge, NIC</td></tr>
+                <tr><td>1 · Physical</td><td>Сигналы, разъёмы, кабели</td><td>Hub, repeater, кабель</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout warn" style="margin-top:12px">
+            <span class="callout-title">Ловушки</span>
+            Hub и repeater — физический уровень. Switch и bridge — канальный. Router — сетевой. Не приписывай коммутатору маршрутизацию по IP.
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по OSI</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>На каком уровне работает router?</summary><p>На сетевом (Layer 3), с IP-адресами и маршрутизацией.</p></details>
+            <details class="qa"><summary>Где работают TCP и UDP?</summary><p>На транспортном уровне (Layer 4).</p></details>
+            <details class="qa"><summary>Что такое инкапсуляция?</summary><p>Добавление служебной информации при прохождении данных вниз по уровням. При получении выполняется декапсуляция.</p></details>
+            <details class="qa"><summary>Сколько уровней в OSI и TCP/IP?</summary><p>OSI — 7, TCP/IP — обычно 4.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= SECURITY ================= -->
+      <section class="section" id="security" data-nav="Информационная безопасность" data-num="09" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>Информационная безопасность</h1>
+            <p class="lead">Триада CIA, угрозы, вредоносные программы, фишинг, социальная инженерия и атаки на доступность. Учись отличать похожие виды атак.</p>
+          </div>
+          <button class="mark-btn" data-mark="security">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="def">
+            <span class="term">Информационная безопасность</span> — защита информации и информационных систем от несанкционированного доступа, изменения, раскрытия, уничтожения и нарушения доступности.
+          </div>
+          <p class="small" style="margin-top:10px">Три цели безопасности образуют триаду <b>CIA</b>. Нажми на карточку, чтобы увидеть примеры и методы защиты.</p>
+          <div class="grid-3" style="margin-top:14px" data-cia>
+            <button class="card soft cia-card" type="button" aria-expanded="false" data-cia-card>
+              <span class="cia-letter">C</span>
+              <h3>Confidentiality</h3>
+              <p class="small muted">Конфиденциальность. Информация доступна только тем, у кого есть права.</p>
+              <span class="cia-toggle">Показать детали +</span>
+              <div class="cia-extra">
+                <b>Пример:</b> пароль от учётной записи не должен быть доступен посторонним.<br>
+                <b>Методы:</b> пароли, шифрование, контроль доступа, многофакторная аутентификация.
+              </div>
+            </button>
+            <button class="card soft cia-card" type="button" aria-expanded="false" data-cia-card>
+              <span class="cia-letter">I</span>
+              <h3>Integrity</h3>
+              <p class="small muted">Целостность. Информация сохраняет точность и полноту, изменения обнаруживаются.</p>
+              <span class="cia-toggle">Показать детали +</span>
+              <div class="cia-extra">
+                <b>Пример:</b> сумма на банковском счёте не меняется без разрешённой операции.<br>
+                <b>Методы:</b> контрольные суммы, хеширование, цифровые подписи, контроль изменений.
+              </div>
+            </button>
+            <button class="card soft cia-card" type="button" aria-expanded="false" data-cia-card>
+              <span class="cia-letter">A</span>
+              <h3>Availability</h3>
+              <p class="small muted">Доступность. Информация и сервисы доступны уполномоченным пользователям.</p>
+              <span class="cia-toggle">Показать детали +</span>
+              <div class="cia-extra">
+                <b>Пример:</b> сервер образовательной платформы работает, когда ученикам нужно сдать тест.<br>
+                <b>Методы:</b> резервирование, резервное копирование, мониторинг, защита от перегрузок, план восстановления.
+              </div>
+            </button>
+          </div>
+          <div class="callout warn" style="margin-top:14px">
+            <span class="callout-title">Ловушки ЕНТ</span>
+            Защита пароля от посторонних → <b>Confidentiality</b>. Запрет несанкционированного изменения файла → <b>Integrity</b>. Обеспечение работы сайта → <b>Availability</b>.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Основные угрозы</h2>
+          <div class="pill-row" style="margin-top:10px">
+            <span class="chip">Вредоносные программы</span>
+            <span class="chip">Фишинг</span>
+            <span class="chip">Социальная инженерия</span>
+            <span class="chip">Несанкционированный доступ</span>
+            <span class="chip">Утечка информации</span>
+            <span class="chip">Перехват данных</span>
+            <span class="chip">Подмена данных</span>
+            <span class="chip">DoS / DDoS</span>
+            <span class="chip">Потеря оборудования</span>
+            <span class="chip">Слабые пароли</span>
+          </div>
+          <p class="small muted" style="margin-top:12px"><b>Угроза</b> — потенциальная причина нарушения безопасности системы. Угроза может быть реализована атакой, а может остаться риском.</p>
+        </div>
+
+        <div class="card">
+          <h2>Вредоносное ПО · Malware</h2>
+          <p class="small" style="margin-top:4px"><b>Malware</b> — общее название программ, созданных для вреда, нарушения работы или несанкционированного доступа. Не все вредоносные программы являются вирусами.</p>
+          <div class="grid-3" style="margin-top:14px">
+            <div class="card soft"><h4>Virus · вирус</h4><p class="tiny muted">Внедряется в другие файлы или программы, часто требует запуска заражённого объекта.</p></div>
+            <div class="card soft"><h4>Worm · червь</h4><p class="tiny muted">Самостоятельно распространяется между системами, например через сеть.</p></div>
+            <div class="card soft"><h4>Trojan · троян</h4><p class="tiny muted">Выдаёт себя за легитимное ПО, но выполняет вредоносные действия.</p></div>
+            <div class="card soft"><h4>Ransomware</h4><p class="tiny muted">Блокирует или шифрует данные и требует выкуп.</p></div>
+            <div class="card soft"><h4>Spyware</h4><p class="tiny muted">Скрытно собирает информацию о пользователе и его действиях.</p></div>
+            <div class="card soft"><h4>Keylogger</h4><p class="tiny muted">Фиксирует нажатия клавиш. Может быть программой или устройством.</p></div>
+            <div class="card soft"><h4>Adware</h4><p class="tiny muted">Показывает рекламу; отдельные разновидности навязчивы и небезопасны.</p></div>
+            <div class="card soft"><h4>Rootkit</h4><p class="tiny muted">Скрывает вредоносную активность и присутствие в системе.</p></div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:14px">
+            <table>
+              <thead><tr><th>Вирус</th><th>Червь</th><th>Троян</th></tr></thead>
+              <tbody>
+                <tr><td>Внедряется в файлы и программы</td><td>Самостоятельно распространяется</td><td>Маскируется под полезную программу</td></tr>
+                <tr><td>Часто нужен запуск заражённого объекта</td><td>Может распространяться через сеть</td><td>Пользователь сам устанавливает</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Фишинг</h2>
+            <p class="small" style="margin-top:6px">Мошенничество, при котором злоумышленник обманом получает конфиденциальную информацию, выдавая себя за доверенную организацию или человека.</p>
+            <p class="small" style="margin-top:8px"><b>Признаки:</b></p>
+            <ul class="small" style="margin-top:4px">
+              <li>Подозрительный адрес отправителя.</li>
+              <li>Поддельный сайт и необычные ссылки.</li>
+              <li>Просьба сообщить пароль или код.</li>
+              <li>Давление, срочность, угрозы.</li>
+              <li>Неожиданные вложения.</li>
+            </ul>
+            <div class="callout bad" style="margin-top:10px">
+              <span class="callout-title">Пример</span>
+              Сообщение якобы от банка: «Подтвердите учётную запись по ссылке, иначе счёт заблокируют». Настоящий банк не просит пароль в переписке.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Социальная инженерия</h2>
+            <p class="small" style="margin-top:6px">Психологические приёмы и манипуляции, чтобы заставить человека раскрыть информацию или совершить нежелательное действие.</p>
+            <ul class="small" style="margin-top:8px">
+              <li>Выдать себя за сотрудника техподдержки.</li>
+              <li>Создать ложное чувство срочности.</li>
+              <li>Попросить код подтверждения.</li>
+              <li>Представиться знакомым человеком.</li>
+            </ul>
+            <div class="callout tip" style="margin-top:10px">
+              <span class="callout-title">Защита</span>
+              Проверять отправителя по другому каналу, не сообщать коды, не переходить по подозрительным ссылкам, использовать MFA.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>DoS и DDoS</h2>
+          <div class="grid-2" style="margin-top:10px">
+            <div class="card soft">
+              <h4>DoS</h4>
+              <p class="small muted"><b>Denial of Service</b> — атака, направленная на нарушение доступности сервиса. Источник обычно один.</p>
+            </div>
+            <div class="card soft">
+              <h4>DDoS</h4>
+              <p class="small muted"><b>Distributed Denial of Service</b> — распределённая атака: множество источников создают чрезмерную нагрузку.</p>
+            </div>
+          </div>
+          <div class="callout exam" style="margin-top:12px">
+            <span class="callout-title">Связь с CIA</span>
+            DoS и DDoS — прежде всего угроза <b>Availability</b>. Шифрование и пароли здесь ни при чём: сервис должен оставаться доступным.
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <span class="callout-title">Что важно не перепутать</span>
+          Malware — <b>широкое</b> понятие. Вирус — конкретный тип, который внедряется в файлы. Червь распространяется сам. Троян маскируется. Ransomware требует выкуп. Фишинг — это <b>обман пользователя</b>, а не обязательно программа.
+        </div>
+      </section>
+
+      <!-- ================= PROTECTION ================= -->
+      <section class="section" id="protection" data-nav="Защита информации" data-num="10" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Раздел 01 · Тема 02</div>
+            <h1>Методы защиты информации</h1>
+            <p class="lead">Антивирусы и их методы обнаружения, брандмауэр, шифрование, хеширование, аутентификация, MFA, резервное копирование и цифровая подпись.</p>
+          </div>
+          <button class="mark-btn" data-mark="protection">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <h2>Антивирусное ПО</h2>
+            <span class="badge accent">обнаружение + реакция</span>
+          </div>
+          <p class="small" style="margin-top:8px"><b>Antivirus Software</b> — защитное ПО, которое обнаруживает, блокирует и помогает устранять вредоносные программы.</p>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="card soft">
+              <h4>Что делает</h4>
+              <ul class="small" style="margin-top:6px">
+                <li>Обнаруживает вредоносное ПО.</li>
+                <li>Проверяет файлы и мониторит систему.</li>
+                <li>Блокирует подозрительную активность.</li>
+                <li>Помещает объекты в карантин.</li>
+                <li>Удаляет вредоносные файлы.</li>
+                <li>Обновляет базы и механизмы обнаружения.</li>
+              </ul>
+            </div>
+            <div class="card soft">
+              <h4>Примеры решений</h4>
+              <div class="pill-row" style="margin-top:8px">
+                <span class="chip">Microsoft Defender</span><span class="chip">ESET</span><span class="chip">Bitdefender</span><span class="chip">Kaspersky</span><span class="chip">Avast</span>
+              </div>
+              <div class="callout info" style="margin-top:12px">
+                <span class="callout-title">Не путай</span>
+                Антивирус проверяет файлы и поведение. Firewall фильтрует сетевые соединения. Это разные слои защиты.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Методы обнаружения</h2>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="card soft">
+              <h4>1. Сигнатурный · Signature-Based</h4>
+              <p class="small muted">Сравнение файла с известными признаками вредоносных программ. Хорошо ловит известные угрозы, но может пропустить новую или изменённую.</p>
+            </div>
+            <div class="card soft">
+              <h4>2. Эвристический · Heuristic</h4>
+              <p class="small muted">Анализ признаков и структуры программы. Может найти ранее неизвестную угрозу, но возможны ложные срабатывания.</p>
+            </div>
+            <div class="card soft">
+              <h4>3. Поведенческий · Behavior-Based</h4>
+              <p class="small muted">Наблюдение за действиями программы во время выполнения. Например, массовое изменение файлов может вызвать предупреждение.</p>
+            </div>
+            <div class="card soft">
+              <h4>4. Облачный · Cloud-Based</h4>
+              <p class="small muted">Использование облачных сервисов и актуальной информации об угрозах для анализа подозрительных объектов.</p>
+            </div>
+            <div class="card soft">
+              <h4>5. Песочница · Sandbox</h4>
+              <p class="small muted">Изолированная среда, где программа анализируется отдельно от основной системы. Вредоносное воздействие ограничено.</p>
+            </div>
+            <div class="card soft">
+              <h4>Карантин · Quarantine</h4>
+              <p class="small muted">Изолированное хранилище подозрительных файлов. Файл не удалён, но и не может свободно использоваться.</p>
+            </div>
+          </div>
+          <div class="table-wrap compact" style="margin-top:12px">
+            <table>
+              <thead><tr><th>Действие</th><th>Что происходит</th></tr></thead>
+              <tbody>
+                <tr><td><b>Удаление</b></td><td>Файл уничтожается</td></tr>
+                <tr><td><b>Карантин</b></td><td>Файл изолируется и сохраняется</td></tr>
+                <tr><td><b>Блокировка</b></td><td>Выполнение или доступ к файлу запрещается</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Основные методы защиты</h2>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Метод</th><th>Назначение</th></tr></thead>
+              <tbody>
+                <tr><td><b>Антивирус</b></td><td>Обнаружение вредоносных программ</td></tr>
+                <tr><td><b>Firewall</b></td><td>Контроль сетевого трафика по правилам</td></tr>
+                <tr><td><b>Encryption</b></td><td>Шифрование информации</td></tr>
+                <tr><td><b>Authentication</b></td><td>Проверка личности</td></tr>
+                <tr><td><b>Authorization</b></td><td>Определение прав доступа</td></tr>
+                <tr><td><b>Backup</b></td><td>Резервное копирование</td></tr>
+                <tr><td><b>MFA</b></td><td>Многофакторная аутентификация</td></tr>
+                <tr><td><b>Digital Signature</b></td><td>Подтверждение подлинности и целостности</td></tr>
+                <tr><td><b>Access Control</b></td><td>Управление доступом</td></tr>
+                <tr><td><b>Software Updates</b></td><td>Исправление уязвимостей</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Firewall</h2>
+            <p class="small" style="margin-top:6px"><b>Брандмауэр</b> контролирует сетевой трафик в соответствии с правилами безопасности.</p>
+            <ul class="small" style="margin-top:8px">
+              <li>Разрешает определённые соединения.</li>
+              <li>Блокирует нежелательный трафик.</li>
+              <li>Фильтрует входящие и исходящие подключения.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Шифрование</h2>
+            <p class="small" style="margin-top:6px"><b>Encryption</b> — преобразование информации в форму, которую нельзя прочитать без ключа.</p>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Тип</th><th>Ключи</th><th>Пример</th></tr></thead>
+                <tbody>
+                  <tr><td>Симметричное</td><td>Один секретный ключ</td><td>AES</td></tr>
+                  <tr><td>Асимметричное</td><td>Пара: public + private</td><td>RSA</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Шифрование и хеширование</h2>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Шифрование</th><th>Хеширование</th></tr></thead>
+              <tbody>
+                <tr><td>Можно расшифровать с ключом</td><td>Не предназначено для восстановления исходных данных</td></tr>
+                <tr><td>Защищает конфиденциальность</td><td>Проверяет целостность и используется в других задачах</td></tr>
+                <tr><td>Использует ключи</td><td>Криптографическая хеш-функция не использует ключ в обычном режиме</td></tr>
+                <tr><td>Примеры: AES, RSA</td><td>Примеры: SHA-256, SHA-3</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout warn" style="margin-top:12px">
+            <span class="callout-title">Ловушка</span>
+            Хеш — не «зашифрованный пароль, который можно расшифровать». Хеширование необратимо. Сервер сравнивает хеши, а не хранит исходный пароль.
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Authentication vs Authorization</h2>
+            <div class="table-wrap compact" style="margin-top:10px">
+              <table>
+                <thead><tr><th>Аутентификация</th><th>Авторизация</th></tr></thead>
+                <tbody>
+                  <tr><td>Проверяет, <b>кто ты</b></td><td>Определяет, <b>что тебе разрешено</b></td></tr>
+                  <tr><td>Логин, пароль, код, биометрия</td><td>Права на просмотр, редактирование, удаление</td></tr>
+                  <tr><td>Пример: вход в систему</td><td>Пример: ученик видит оценки, учитель выставляет</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout tip" style="margin-top:10px">
+              <span class="callout-title">Запомни</span>
+              Authentication — «кто ты?». Authorization — «что тебе можно?».
+            </div>
+          </div>
+          <div class="card">
+            <h2>Многофакторная аутентификация</h2>
+            <p class="small" style="margin-top:6px"><b>MFA</b> — подтверждение личности двумя или более независимыми факторами разных категорий.</p>
+            <div class="grid-3" style="margin-top:10px">
+              <div class="card soft"><h4>Know</h4><p class="tiny muted">То, что ты знаешь: пароль, PIN.</p></div>
+              <div class="card soft"><h4>Have</h4><p class="tiny muted">То, что у тебя есть: токен, телефон.</p></div>
+              <div class="card soft"><h4>Are</h4><p class="tiny muted">То, чем ты являешься: отпечаток, лицо.</p></div>
+            </div>
+            <p class="tiny muted" style="margin-top:10px"><b>2FA</b> — частный случай MFA с двумя факторами. Два пароля — это не MFA, потому что категория одна.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Резервное копирование · Backup</h2>
+          <p class="small" style="margin-top:4px">Создание дополнительных копий для восстановления после потери, повреждения или изменения данных.</p>
+          <div class="grid-3" style="margin-top:12px">
+            <div class="card soft"><h4>Full Backup</h4><p class="small muted">Полная копия всех данных.</p></div>
+            <div class="card soft"><h4>Incremental</h4><p class="small muted">Копирует изменения с момента <b>последнего резервного копирования</b> любого типа.</p></div>
+            <div class="card soft"><h4>Differential</h4><p class="small muted">Копирует изменения с момента <b>последней полной</b> копии.</p></div>
+          </div>
+          <div class="callout info" style="margin-top:12px">
+            <span class="callout-title">Пример</span>
+            В понедельник — полная копия. Во вторник и среду появляются новые данные. <b>Incremental</b> в среду сохранит изменения после вторника. <b>Differential</b> в среду сохранит всё, что изменилось после понедельника.
+          </div>
+          <div class="callout warn" style="margin-top:10px">
+            <span class="callout-title">Правило</span>
+            Резервная копия должна храниться отдельно от оригинала. Копия на том же повреждённом диске не спасает от шифровальщика или отказа накопителя.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Цифровая подпись</h2>
+          <p class="small" style="margin-top:6px"><b>Digital Signature</b> — криптографический механизм, который позволяет проверить подлинность отправителя и целостность электронного сообщения или документа.</p>
+          <div class="grid-3" style="margin-top:12px">
+            <div class="card soft"><h4>Авторство</h4><p class="tiny muted">Подтверждает происхождение сообщения.</p></div>
+            <div class="card soft"><h4>Целостность</h4><p class="tiny muted">Помогает обнаружить изменения данных.</p></div>
+            <div class="card soft"><h4>Неотказуемость</h4><p class="tiny muted">Связывает подпись с ключом отправителя.</p></div>
+          </div>
+          <div class="callout exam" style="margin-top:12px">
+            <span class="callout-title">Электронная подпись vs подпись от руки</span>
+            Цифровая подпись проверяется криптографически. Она не просто «картинка с подписью», а значение, зависящее от документа и ключа.
+          </div>
+        </div>
+
+        <details class="acc">
+          <summary>Быстрая проверка по защите</summary>
+          <div class="acc-body">
+            <details class="qa"><summary>Чем антивирус отличается от firewall?</summary><p>Антивирус ищет вредоносные файлы и поведение. Firewall контролирует сетевые соединения по правилам.</p></details>
+            <details class="qa"><summary>Можно ли расшифровать хеш?</summary><p>Нет, хеширование необратимо. Можно лишь сравнить вычисленный хеш с известным.</p></details>
+            <details class="qa"><summary>Что такое 2FA?</summary><p>Два независимых фактора разных категорий, например пароль + код на телефоне. Два пароля — не 2FA.</p></details>
+            <details class="qa"><summary>Чем incremental отличается от differential?</summary><p>Incremental — изменения с последнего любого бэкапа. Differential — изменения с последнего полного.</p></details>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= TRAPS ================= -->
+      <section class="section" id="traps" data-nav="Ловушки ЕНТ" data-num="11" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Экзаменационная практика</div>
+            <h1>Ловушки и формат заданий</h1>
+            <p class="lead">Здесь собрано то, что чаще всего путают: пары похожих понятий, словарь формулировок и стратегия ответа на разные типы заданий.</p>
+          </div>
+          <button class="mark-btn" data-mark="traps">Отметить изученным</button>
+        </div>
+
+        <div class="card">
+          <h2>Частые пары-ловушки</h2>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Путают</th><th>Правильное различие</th></tr></thead>
+              <tbody>
+                <tr><td><b>RAM и ROM</b></td><td>Оперативная энергозависимая память и постоянная энергонезависимая</td></tr>
+                <tr><td><b>RAM и SSD</b></td><td>Временная рабочая память и долговременное хранение</td></tr>
+                <tr><td><b>CPU и GPU</b></td><td>Универсальные вычисления и массово-параллельные</td></tr>
+                <tr><td><b>Hub и Switch</b></td><td>Рассылка сигнала всем и пересылка кадров по MAC</td></tr>
+                <tr><td><b>Switch и Router</b></td><td>MAC и IP; канальный и сетевой уровень</td></tr>
+                <tr><td><b>Modem и Router</b></td><td>Преобразование сигналов и маршрутизация</td></tr>
+                <tr><td><b>DNS и DHCP</b></td><td>Имя → IP и автоматическая выдача сетевых настроек</td></tr>
+                <tr><td><b>TCP и UDP</b></td><td>Надёжная доставка и передача без гарантии</td></tr>
+                <tr><td><b>HTTP и HTTPS</b></td><td>Без TLS и с TLS; порты 80 и 443</td></tr>
+                <tr><td><b>Virus и Worm</b></td><td>Внедряется в файлы и распространяется самостоятельно</td></tr>
+                <tr><td><b>Virus и Trojan</b></td><td>Заражение файлов и маскировка под полезную программу</td></tr>
+                <tr><td><b>Antivirus и Firewall</b></td><td>Файлы и поведение против сетевого трафика</td></tr>
+                <tr><td><b>Authentication и Authorization</b></td><td>Кто ты и что тебе разрешено</td></tr>
+                <tr><td><b>Encryption и Hashing</b></td><td>Обратимое преобразование с ключом и необратимый хеш</td></tr>
+                <tr><td><b>Freeware и Open Source</b></td><td>Бесплатность и открытость исходного кода</td></tr>
+                <tr><td><b>Driver и Utility</b></td><td>Связь с конкретным устройством и обслуживание системы</td></tr>
+                <tr><td><b>PAN и LAN</b></td><td>Личная сеть на несколько метров и сеть здания</td></tr>
+                <tr><td><b>LAN и MAN</b></td><td>Здание и город</td></tr>
+                <tr><td><b>MAN и WAN</b></td><td>Город и страны/континенты</td></tr>
+                <tr><td><b>Star и Mesh</b></td><td>Центральный узел и множество альтернативных связей</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Словарь формулировок</h2>
+          <p class="small muted" style="margin-top:4px">Если в вопросе написано…</p>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Формулировка</th><th>Ищи понятие</th></tr></thead>
+              <tbody>
+                <tr><td>Передача сигналов на все порты</td><td><b>Hub</b></td></tr>
+                <tr><td>Пересылка кадров по MAC</td><td><b>Switch</b></td></tr>
+                <tr><td>Маршрутизация пакетов по IP</td><td><b>Router</b></td></tr>
+                <tr><td>Автоматическое получение IP</td><td><b>DHCP</b></td></tr>
+                <tr><td>Преобразование доменного имени</td><td><b>DNS</b></td></tr>
+                <tr><td>Передача веб-страниц</td><td><b>HTTP</b></td></tr>
+                <tr><td>Защищённая передача веб-данных</td><td><b>HTTPS</b></td></tr>
+                <tr><td>Отправка электронной почты</td><td><b>SMTP</b></td></tr>
+                <tr><td>Получение и синхронизация почты</td><td><b>IMAP</b></td></tr>
+                <tr><td>Передача файлов</td><td><b>FTP</b></td></tr>
+                <tr><td>Проверка личности</td><td><b>Authentication</b></td></tr>
+                <tr><td>Определение прав доступа</td><td><b>Authorization</b></td></tr>
+                <tr><td>Обеспечение секретности данных</td><td><b>Confidentiality</b></td></tr>
+                <tr><td>Защита от несанкционированного изменения</td><td><b>Integrity</b></td></tr>
+                <tr><td>Обеспечение бесперебойного доступа</td><td><b>Availability</b></td></tr>
+                <tr><td>Изоляция подозрительного файла</td><td><b>Quarantine</b></td></tr>
+                <tr><td>Преобразование данных в хеш</td><td><b>Hashing</b></td></tr>
+                <tr><td>Создание копии данных</td><td><b>Backup</b></td></tr>
+                <tr><td>Объединение устройств в пределах здания</td><td><b>LAN</b></td></tr>
+                <tr><td>Объединение сетей города</td><td><b>MAN</b></td></tr>
+                <tr><td>Персональная сеть</td><td><b>PAN</b></td></tr>
+                <tr><td>Глобальная сеть</td><td><b>WAN</b></td></tr>
+                <tr><td>Временное хранение работающих данных</td><td><b>RAM</b></td></tr>
+                <tr><td>Постоянное хранение файлов</td><td><b>SSD / HDD</b></td></tr>
+                <tr><td>Выполнение команд программы</td><td><b>CPU</b></td></tr>
+                <tr><td>Графические и параллельные вычисления</td><td><b>GPU</b></td></tr>
+                <tr><td>Соединение компонентов компьютера</td><td><b>Motherboard</b></td></tr>
+                <tr><td>Управление аппаратными ресурсами</td><td><b>Operating System</b></td></tr>
+                <tr><td>Связь ОС с устройством</td><td><b>Driver</b></td></tr>
+                <tr><td>Обслуживание компьютера</td><td><b>Utility</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Формат №1 · определение по описанию</h2>
+            <div class="callout info" style="margin-top:8px">
+              «Устройство соединяет компьютеры в локальной сети и пересылает кадры на основании MAC-адресов».
+            </div>
+            <p class="small muted" style="margin-top:10px">Не ориентируйся только на слова «соединяет компьютеры». Смотри, какой адрес используется: MAC → switch, IP → router, «всем портам» → hub.</p>
+          </div>
+          <div class="card">
+            <h2>Формат №2 · соответствие</h2>
+            <p class="small muted" style="margin-top:6px">Пары «термин → функция» могут быть намеренно похожими. Сначала разложи очевидные пары, затем рассуждай оставшимися.</p>
+            <div class="callout tip" style="margin-top:8px">
+              DNS → имя в IP. DHCP → автонастройки. SMTP → отправка. IMAP → синхронизация. FTP → файлы.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Формат №3 · несколько ответов</h2>
+            <p class="small muted" style="margin-top:6px">Проверь каждый вариант отдельно. Вопрос «выберите все устройства ввода» может содержать микрофон и сканер среди монитора и принтера.</p>
+            <div class="callout warn" style="margin-top:8px">
+              Не спеши нажать «готово»: перечитай, не пропущен ли второй правильный вариант.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Формат №4 · контекст и расчёты</h2>
+            <p class="small muted" style="margin-top:6px">В тексте могут быть лишние детали. Выпиши, что спрашивают: тип сети, функцию устройства, маску, количество адресов.</p>
+            <div class="callout info" style="margin-top:8px">
+              Для /n: адресов = 2<sup>32−n</sup>. Для /24 это 256, для /29 — 8.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Стратегия на экзамене</h2>
+          <div class="steps" style="margin-top:12px">
+            <div class="step"><span class="step-num">1</span><div><h4>Определи тему вопроса</h4><p>Железо, ПО, сеть, протокол, адресация или безопасность. Это сразу сужает круг понятий.</p></div></div>
+            <div class="step"><span class="step-num">2</span><div><h4>Найди ключевое слово</h4><p>MAC, IP, TLS, имя → IP, «без гарантии», «центральный узел», «изменение данных».</p></div></div>
+            <div class="step"><span class="step-num">3</span><div><h4>Отбрось похожие, но неверные</h4><p>Например, switch vs router, virus vs worm, authentication vs authorization.</p></div></div>
+            <div class="step"><span class="step-num">4</span><div><h4>Проверь расчёт или несколько ответов</h4><p>Для подсетей проверь степень двойки. Для multi-select перечитай все варианты.</p></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Чек-лист перед экзаменом</h2>
+          <p class="small muted" style="margin-top:4px">Отмечай пункты — галочки сохранятся в браузере.</p>
+          <div class="checklist" data-checklist style="margin-top:12px">
+            <label class="check-item"><input type="checkbox" data-check-id="hw"><span>CPU, GPU, RAM, ROM, HDD, SSD, Motherboard</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="bus"><span>Шины, сокеты, слоты, интерфейсы, периферия</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="sw"><span>Системное, прикладное и инструментальное ПО</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="util"><span>Утилиты: антивирус, архиватор, дефрагментатор, backup</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="pan"><span>PAN, LAN, MAN, WAN</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="arch"><span>Client-Server и P2P</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="topo"><span>Топологии: bus, star, ring, tree, mesh, hybrid</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="dev"><span>Hub, switch, router, modem, access point</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="media"><span>Ethernet, Wi-Fi, витая пара, оптоволокно</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="proto"><span>TCP, UDP, HTTP, HTTPS, FTP, DNS, DHCP</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="ip"><span>IPv4, IPv6, MAC, private IP, subnet</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="osi"><span>OSI и TCP/IP</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="cia"><span>CIA, malware, phishing, DoS/DDoS</span></label>
+            <label class="check-item"><input type="checkbox" data-check-id="prot"><span>Antivirus, firewall, encryption, hashing, backup</span></label>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <span class="badge" id="checklistCount">0 / 14</span>
+            <button class="btn small ghost" id="checklistReset">Сбросить галочки</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= WORDING ================= -->
+      <section class="section" id="wording" data-nav="Академические формулировки" data-num="12" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Формулировки ЕНТ</div>
+            <h1>Академические формулировки</h1>
+            <p class="lead">На ЕНТ правильный ответ часто не называют привычным словом, а описывают через функцию: «формирует управляющие сигналы», «сокращает время обращения к памяти», «выполняется, пока условие истинно». Здесь учимся узнавать понятие по описанию.</p>
+          </div>
+          <button class="mark-btn" data-mark="wording">Отметить изученным</button>
+        </div>
+
+        <div class="callout info">
+          <span class="callout-title">Главный принцип</span>
+          Не ищи в вопросе знакомый термин. Определи, <b>что именно делает</b> объект: управляет, вычисляет, хранит, преобразует, передаёт или ограничивает. Затем сопоставь это действие с понятием.
+        </div>
+
+        <div class="card">
+          <h2>Как разбирать длинное определение</h2>
+          <div class="steps" style="margin-top:12px">
+            <div class="step"><span class="step-num">1</span><div><h4>Найди глагол-действие</h4><p>Управляет, выполняет, хранит, преобразует, передаёт, ограничивает, назначает. Это подсказка о группе понятий.</p></div></div>
+            <div class="step"><span class="step-num">2</span><div><h4>Определи объект действия</h4><p>Команды, данные, адреса, имена, пакеты, кадры, файлы, устройства или права доступа.</p></div></div>
+            <div class="step"><span class="step-num">3</span><div><h4>Отбрось похожие варианты</h4><p>CU управляет, ALU вычисляет, регистр хранит. Router работает с IP, switch — с MAC. Компилятор переводит заранее, интерпретатор — по ходу.</p></div></div>
+            <div class="step"><span class="step-num">4</span><div><h4>Проверь все условия</h4><p>В длинном определении может быть два-три признака. Правильный ответ должен подходить ко всем, а не только к первому.</p></div></div>
+          </div>
+        </div>
+
+        <div class="card pad-lg" data-wording>
+          <div class="spread" style="flex-wrap:wrap;gap:10px">
+            <div>
+              <h2>Тренажёр «Определи по описанию»</h2>
+              <p class="small muted" style="margin-top:3px">34 академические формулировки. Выбери понятие, которое соответствует описанию, и прочитай разбор.</p>
+            </div>
+            <span class="badge" id="wordingBest">Лучший результат: —</span>
+          </div>
+          <div class="quiz-shell" style="margin-top:14px">
+            <div class="quiz-top">
+              <div class="quiz-filters" id="wordingFilters">
+                <button class="qf active" data-wording-topic="all">Все</button>
+                <button class="qf" data-wording-topic="hardware">Железо</button>
+                <button class="qf" data-wording-topic="software">ПО</button>
+                <button class="qf" data-wording-topic="equipment">Оборудование</button>
+                <button class="qf" data-wording-topic="protocols">Протоколы</button>
+                <button class="qf" data-wording-topic="security">Безопасность</button>
+                <button class="qf" data-wording-topic="programming">Программирование</button>
+              </div>
+              <span class="quiz-progress" id="wordingProgress">0 / 0</span>
+            </div>
+            <div class="quiz-bar"><span id="wordingBar"></span></div>
+            <div id="wordingStage" aria-live="polite"></div>
+            <div class="row" style="margin-top:12px">
+              <button class="btn small ghost" id="wordingRestart">Начать заново</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Академический словарь</h2>
+          <p class="small muted" style="margin-top:4px">Если в вопросе написано так…</p>
+          <div class="table-wrap compact" style="margin-top:10px">
+            <table>
+              <thead><tr><th>Формулировка</th><th>Понятие</th></tr></thead>
+              <tbody>
+                <tr><td>Формирует и подаёт управляющие сигналы</td><td><b>Устройство управления (CU)</b></td></tr>
+                <tr><td>Выполняет арифметические и логические операции</td><td><b>ALU</b></td></tr>
+                <tr><td>Временно хранит данные, результаты и адреса внутри процессора</td><td><b>Регистры</b></td></tr>
+                <tr><td>Сокращает время обращения процессора к оперативной памяти</td><td><b>Кэш-память</b></td></tr>
+                <tr><td>Соединяет основные компоненты компьютера</td><td><b>Материнская плата</b></td></tr>
+                <tr><td>Передаёт адрес ячейки или устройства</td><td><b>Шина адреса</b></td></tr>
+                <tr><td>Обеспечивает взаимодействие ОС с конкретным устройством</td><td><b>Драйвер</b></td></tr>
+                <tr><td>Управляет ресурсами и связывает пользователя, программы и оборудование</td><td><b>Операционная система</b></td></tr>
+                <tr><td>Преобразует всю программу в машинный код до выполнения</td><td><b>Компилятор</b></td></tr>
+                <tr><td>Выполняет код по мере разбора без отдельного файла</td><td><b>Интерпретатор</b></td></tr>
+                <tr><td>Преобразует доменное имя в IP-адрес</td><td><b>DNS</b></td></tr>
+                <tr><td>Автоматически назначает IP-адреса устройствам</td><td><b>DHCP</b></td></tr>
+                <tr><td>Передаёт пакеты между сетями по IP-адресации</td><td><b>Маршрутизатор</b></td></tr>
+                <tr><td>Анализирует MAC-адреса кадров и передаёт их нужному порту</td><td><b>Коммутатор</b></td></tr>
+                <tr><td>Ограничивает доступ к сети по правилам безопасности</td><td><b>Firewall</b></td></tr>
+                <tr><td>Устанавливает соединение, контролирует доставку и порядок сегментов</td><td><b>TCP</b></td></tr>
+                <tr><td>Передаёт датаграммы без соединения и гарантий</td><td><b>UDP</b></td></tr>
+                <tr><td>Позволяет частной сети выходить в интернет через один публичный IPv4</td><td><b>NAT</b></td></tr>
+                <tr><td>Реализует интерактивность страницы и работу с элементами HTML</td><td><b>JavaScript</b></td></tr>
+                <tr><td>Представляет HTML-документ в виде дерева элементов</td><td><b>DOM</b></td></tr>
+                <tr><td>Добавляет элемент в конец массива</td><td><b>push()</b></td></tr>
+                <tr><td>Удаляет последний элемент массива и возвращает его</td><td><b>pop()</b></td></tr>
+                <tr><td>Преобразует строку в целое число</td><td><b>parseInt()</b></td></tr>
+                <tr><td>Сравнивает значение и тип без приведения</td><td><b>===</b></td></tr>
+                <tr><td>Выполняет блок при истинном логическом условии</td><td><b>if</b></td></tr>
+                <tr><td>Повторяет блок, пока условие истинно</td><td><b>while</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h2>Похожие варианты: архитектура</h2>
+            <p class="small muted" style="margin-top:6px">CU, ALU, регистры и кэш относятся к процессору, поэтому их специально ставят в один вопрос.</p>
+            <div class="callout tip" style="margin-top:8px">
+              <b>CU</b> — управляет · <b>ALU</b> — вычисляет · <b>регистры</b> — хранят внутри ядра · <b>кэш</b> — ускоряет доступ к RAM.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Похожие варианты: программирование</h2>
+            <p class="small muted" style="margin-top:6px">Названия методов короткие, поэтому вопрос описывает их действие.</p>
+            <div class="callout warn" style="margin-top:8px">
+              <b>push</b> — в конец · <b>pop</b> — удалить последний · <b>shift</b> — удалить первый · <b>parseInt</b> — в целое число · <b>===</b> — строгое сравнение.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Формулировка с условиями</h2>
+            <p class="small muted" style="margin-top:6px">Читай до конца: «локальная сеть», «MAC-адреса» и «нужный порт» вместе указывают на коммутатор, а не на маршрутизатор.</p>
+            <div class="callout info" style="margin-top:8px">
+              Один признак может подходить к нескольким вариантам. Решает совокупность признаков.
+            </div>
+          </div>
+          <div class="card">
+            <h2>Что делать, если термин незнаком</h2>
+            <p class="small muted" style="margin-top:6px">Разбери описание на действие и объект. Затем выбери вариант, который выполняет именно это действие, даже если название звучит непривычно.</p>
+            <div class="callout tip" style="margin-top:8px">
+              Сначала смысл, потом термин. Не наоборот.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PRACTICE ================= -->
+      <section class="section" id="practice" data-nav="Практика" data-num="13" data-markable="true">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Закрепление</div>
+            <h1>Практика и самопроверка</h1>
+            <p class="lead">Квиз с разбором каждого ответа и карточки для быстрого повторения терминов. Ошибки — это подсказки, какие разделы перечитать.</p>
+          </div>
+          <button class="mark-btn" data-mark="practice">Отметить изученным</button>
+        </div>
+
+        <div class="card pad-lg" data-quiz>
+          <div class="spread" style="flex-wrap:wrap;gap:10px">
+            <div>
+              <h2>Квиз по информатике</h2>
+              <p class="small muted" style="margin-top:3px">Выбери тему или проходи всё подряд. Вопросы перемешиваются.</p>
+            </div>
+            <span class="badge" id="bestScore">Лучший результат: —</span>
+          </div>
+          <div class="quiz-shell" style="margin-top:14px">
+            <div class="quiz-top">
+              <div class="quiz-filters" id="quizFilters">
+                <button class="qf active" data-topic="all">Все</button>
+                <button class="qf" data-topic="hardware">Железо</button>
+                <button class="qf" data-topic="software">ПО</button>
+                <button class="qf" data-topic="networks">Сети</button>
+                <button class="qf" data-topic="equipment">Оборудование</button>
+                <button class="qf" data-topic="protocols">Протоколы</button>
+                <button class="qf" data-topic="addressing">Адресация</button>
+                <button class="qf" data-topic="security">Безопасность</button>
+                <button class="qf" data-topic="programming">Программирование</button>
+                <button class="qf" data-topic="wording">Формулировки</button>
+              </div>
+              <span class="quiz-progress" id="quizProgress">0 / 0</span>
+            </div>
+            <div class="quiz-bar"><span id="quizBar"></span></div>
+            <div id="quizStage" aria-live="polite"></div>
+            <div class="quiz-result" id="quizResult">
+              <div class="score-ring" id="scoreRing" style="--p:0"><span id="scoreText">0%</span></div>
+              <h3 class="center" id="resultTitle">Результат</h3>
+              <p class="center small muted" id="resultSub">—</p>
+              <div class="result-breakdown" id="resultBreakdown"></div>
+              <div class="row" style="justify-content:center;margin-top:16px">
+                <button class="btn primary" id="quizRestart">Пройти ещё раз</button>
+                <button class="btn" id="quizGoWeak">К слабым темам</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pad-lg">
+          <div class="spread" style="flex-wrap:wrap;gap:8px">
+            <div>
+              <h2>Флеш-карточки</h2>
+              <p class="small muted" style="margin-top:3px">Нажми на карточку, чтобы перевернуть. Отмечай «Знаю» или «Повторить».</p>
+            </div>
+            <span class="badge accent" id="flashCountBadge">34 терминов</span>
+          </div>
+          <div class="flash-wrap" style="margin-top:18px">
+            <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Перевернуть карточку">
+              <div class="flashcard-inner">
+                <div class="flash-face">
+                  <span class="ff-tag" id="flashTag">Термин</span>
+                  <h3 id="flashFront">Загрузка…</h3>
+                  <p class="muted">Нажми, чтобы увидеть определение</p>
+                  <span class="ff-hint">Space / Enter — перевернуть</span>
+                </div>
+                <div class="flash-face flash-back">
+                  <span class="ff-tag">Определение</span>
+                  <p id="flashBack"></p>
+                  <span class="ff-hint">Нажми, чтобы вернуть термин</span>
+                </div>
+              </div>
+            </div>
+            <div class="flash-controls">
+              <button class="btn small" id="flashPrev">← Назад</button>
+              <button class="btn small primary" id="flashFlip">Перевернуть</button>
+              <button class="btn small" id="flashNext">Вперёд →</button>
+              <button class="btn small ghost" id="flashShuffle">Перемешать</button>
+            </div>
+            <div class="flash-controls">
+              <button class="btn small good" id="flashKnow">✓ Знаю</button>
+              <button class="btn small warn" id="flashRepeatAction">↻ Повторить</button>
+            </div>
+            <div class="flash-stats">
+              <span>Карточка: <b id="flashCounter">1 / 34</b></span>
+              <span>Знаю: <b id="flashKnown" style="color:var(--good)">0</b></span>
+              <span>Повторить: <b id="flashRepeat" style="color:var(--warn)">0</b></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Как работать с ошибками</h2>
+          <div class="grid-3" style="margin-top:10px">
+            <div class="card soft"><h4>1. Прочитай разбор</h4><p class="tiny muted">В квизе после каждого ответа есть объяснение — не пропускай его.</p></div>
+            <div class="card soft"><h4>2. Вернись в раздел</h4><p class="tiny muted">Название темы в разборе подскажет, какой блок перечитать.</p></div>
+            <div class="card soft"><h4>3. Повтори карточки</h4><p class="tiny muted">Термины запоминаются лучше при активном припоминании, а не перечитывании.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIDEOS ================= -->
+      <section class="section" id="videos" data-nav="Видео" data-num="14" data-markable="false">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Дополнительный формат</div>
+            <h1>Видео по темам</h1>
+            <p class="lead">Подборка роликов и курсов, чтобы увидеть объяснение другим голосом. Видео открываются внутри страницы или на YouTube.</p>
+          </div>
+        </div>
+
+        <div class="callout info">
+          <span class="callout-title">Как смотреть с пользой</span>
+          Не смотри всё подряд. Выбери тему, которая западает, посмотри 10–20 минут, затем вернись к конспекту и пройди квиз по этой теме. Видео без активной проверки запоминается хуже.
+        </div>
+
+        <div class="row" id="videoFilters" style="gap:6px">
+          <button class="qf active" data-video-topic="all">Все</button>
+          <button class="qf" data-video-topic="hardware">Компьютеры</button>
+          <button class="qf" data-video-topic="software">ПО</button>
+          <button class="qf" data-video-topic="networks">Сети</button>
+          <button class="qf" data-video-topic="osi">OSI и IP</button>
+          <button class="qf" data-video-topic="security">Безопасность</button>
+        </div>
+
+        <div class="video-grid" id="videoGrid" style="margin-top:14px"></div>
+
+        <div class="card" style="margin-top:18px">
+          <h2>Ещё подборки на YouTube</h2>
+          <p class="small muted" style="margin-top:4px">Если хочешь больше материала — открой поиск по нужному запросу.</p>
+          <div class="stack-sm" style="margin-top:12px">
+            <a class="search-video" href="https://www.youtube.com/results?search_query=%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D0%B5+%D1%81%D0%B5%D1%82%D0%B8+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85" target="_blank" rel="noopener"><span class="sv-ico">▶</span><span><b>Компьютерные сети для начинающих</b><span>YouTube · поиск по курсам и лекциям</span></span></a>
+            <a class="search-video" href="https://www.youtube.com/results?search_query=%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82%D0%BD%D0%BE%D0%B5+%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%B0+%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><span class="sv-ico">▶</span><span><b>Аппаратное обеспечение компьютера</b><span>YouTube · устройство ПК и компоненты</span></span></a>
+            <a class="search-video" href="https://www.youtube.com/results?search_query=%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C+OSI+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8+%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8" target="_blank" rel="noopener"><span class="sv-ico">▶</span><span><b>Модель OSI простыми словами</b><span>YouTube · 7 уровней и инкапсуляция</span></span></a>
+            <a class="search-video" href="https://www.youtube.com/results?search_query=IP+%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0%D1%86%D0%B8%D1%8F+%D0%BC%D0%B0%D1%81%D0%BA%D0%B0+%D0%BF%D0%BE%D0%B4%D1%81%D0%B5%D1%82%D0%B8+%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><span class="sv-ico">▶</span><span><b>IP-адресация и маски подсетей</b><span>YouTube · расчёт подсетей</span></span></a>
+            <a class="search-video" href="https://www.youtube.com/results?search_query=%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F+%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C+%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85" target="_blank" rel="noopener"><span class="sv-ico">▶</span><span><b>Информационная безопасность с нуля</b><span>YouTube · угрозы, фишинг, защита</span></span></a>
+          </div>
+          <p class="tiny muted" style="margin-top:12px">Ссылки ведут на внешний сервис YouTube. Если встроенное видео недоступно, открой его по кнопке «YouTube» на карточке.</p>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>ЕНТ · Информатика — интерактивный конспект</span>
+        <span>Прогресс, квиз и галочки хранятся локально в браузере</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
