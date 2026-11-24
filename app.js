@@ -1356,6 +1356,56 @@
   if (calcIp && calcPrefix) calcSubnet();
 
   /* ------------------------------------------------------------
+     Калькулятор объёма передачи данных
+     ------------------------------------------------------------ */
+
+  const throughputRate = $("#throughputRate");
+  const throughputMinutes = $("#throughputMinutes");
+  const throughputBtn = $("#throughputCalc");
+  const throughputError = $("#throughputError");
+  const throughputResult = $("#throughputResult");
+
+  function calcThroughput() {
+    if (!throughputRate || !throughputMinutes || !throughputResult) return;
+    const rate = Number(throughputRate.value);
+    const minutes = Number(throughputMinutes.value);
+    const validRate = Number.isFinite(rate) && rate > 0 && rate <= 100000;
+    const validTime = Number.isFinite(minutes) && minutes > 0 && minutes <= 100000;
+
+    if (throughputError) {
+      throughputError.textContent = validRate && validTime
+        ? ""
+        : "Введи скорость от 0 до 100 000 Мбит/с и время от 0 до 100 000 минут.";
+    }
+    if (!validRate || !validTime) {
+      throughputResult.innerHTML = "";
+      return;
+    }
+
+    const seconds = minutes * 60;
+    const megabytes = (rate * 1000000 * seconds) / 8 / 1000000;
+    const gigabytes = megabytes / 1000;
+    const formatter = new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 2 });
+    throughputResult.innerHTML = [
+      ["Время", formatter.format(seconds) + " с", false],
+      ["Объём в десятичных единицах", formatter.format(megabytes) + " МБ", true],
+      ["То же самое", formatter.format(gigabytes) + " ГБ", false]
+    ].map(([label, value, highlight]) =>
+      '<div class="calc-result' + (highlight ? " highlight" : "") + '"><span class="cr-label">' +
+      esc(label) + '</span><span class="cr-value">' + esc(value) + "</span></div>"
+    ).join("");
+  }
+
+  if (throughputBtn) throughputBtn.addEventListener("click", calcThroughput);
+  [throughputRate, throughputMinutes].forEach((input) => {
+    if (!input) return;
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") calcThroughput();
+    });
+  });
+  if (throughputRate && throughputMinutes) calcThroughput();
+
+  /* ------------------------------------------------------------
      Сопоставление протоколов
      ------------------------------------------------------------ */
 

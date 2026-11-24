@@ -45,7 +45,7 @@
       <nav class="nav" id="nav" aria-label="Разделы конспекта"></nav>
       <div class="sidebar-foot">
         <strong>ЕНТ 2026</strong><br>
-        110 тренировочных вопросов по восьми темам. Включены задания с одним и несколькими ответами, верно/неверно и на соответствие.
+        120 тренировочных вопросов по восьми темам. Включены задания с одним и несколькими ответами, верно/неверно и на соответствие.
       </div>
     </aside>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -69,7 +69,7 @@
           </div>
           <div class="stat-grid">
             <div class="stat"><b>14</b><span>учебных разделов</span></div>
-            <div class="stat"><b>110+</b><span>вопросов в тренажёре</span></div>
+            <div class="stat"><b>120+</b><span>вопросов в тренажёре</span></div>
             <div class="stat"><b>9</b><span>интерактивных модулей</span></div>
             <div class="stat"><b>21</b><span>видео и подборок</span></div>
           </div>
@@ -168,6 +168,8 @@
             <p>Конспект составлен по официальной спецификации НЦТ и учебным материалам по компьютерным системам, сетям и информационной безопасности.</p>
             <ul>
               <li><a href="https://prod.testcenter.kz/wp-content/uploads/2025/10/29_%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0_%D1%80%D1%83%D1%81.pdf" target="_blank" rel="noopener">НЦТ — спецификация ЕНТ по информатике</a></li>
+              <li>ITBro — «Компьютерные сети» (учебный материал, предоставленный пользователем).</li>
+              <li><a href="https://pml.nist.gov/cuu/Units/binary.html" target="_blank" rel="noopener">NIST — десятичные и двоичные приставки для битов и байтов</a></li>
               <li><a href="https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html" target="_blank" rel="noopener">Cisco — Networking Basics</a></li>
               <li><a href="https://csrc.nist.gov/glossary/term/security" target="_blank" rel="noopener">NIST — Information Security Glossary</a></li>
               <li><a href="https://www.nist.gov/publications/preventing-and-handling-malware-incidents-how-protect-information-technology-systems" target="_blank" rel="noopener">NIST — Malware and Security</a></li>
@@ -915,6 +917,7 @@
                 <tr><td><b>LAN</b></td><td>Local Area Network</td><td>Комната, дом, офис, школа, здание</td><td>Компьютеры одного класса</td></tr>
                 <tr><td><b>MAN</b></td><td>Metropolitan Area Network</td><td>Город или крупная городская территория</td><td>Объединение сетей районов города</td></tr>
                 <tr><td><b>WAN</b></td><td>Wide Area Network</td><td>Страны, континенты, весь мир</td><td>Интернет, корпоративная сеть между филиалами</td></tr>
+                <tr><td><b>GAN</b></td><td>Global Area Network</td><td>Глобальный масштаб; термин употребляется не во всех классификациях</td><td>Глобально распределённая сеть</td></tr>
               </tbody>
             </table>
           </div>
@@ -927,6 +930,42 @@
               <span class="callout-title">Ловушки</span>
               Домашняя сеть — <b>LAN</b>. Bluetooth-наушники и телефон — <b>PAN</b>. Сеть города — <b>MAN</b>. Интернет — крупнейший пример <b>WAN</b>, но не единственная WAN.
             </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Другие основания классификации</h2>
+          <p class="small muted">Одна и та же сеть одновременно относится к нескольким категориям: например, корпоративная сеть может быть локальной в офисе и территориально распределённой между филиалами.</p>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="card soft">
+              <h3>По принадлежности</h3>
+              <ul class="small muted" style="margin-top:8px">
+                <li><b>Ведомственная (корпоративная)</b> — принадлежит организации и обслуживает её сотрудников, подразделения и ресурсы.</li>
+                <li><b>Государственная</b> — создаётся и управляется государственными органами для их задач и обмена данными.</li>
+              </ul>
+            </div>
+            <div class="card soft">
+              <h3>По учебной шкале скорости</h3>
+              <div class="table-wrap compact" style="margin-top:8px">
+                <table>
+                  <thead><tr><th>Категория</th><th>Ориентир</th></tr></thead>
+                  <tbody>
+                <tr><td>Низкоскоростная</td><td>до 10 Мбит/с</td></tr>
+                    <tr><td>Среднескоростная</td><td>10–100 Мбит/с</td></tr>
+                    <tr><td>Высокоскоростная</td><td>100 Мбит/с–1 Гбит/с</td></tr>
+                    <tr><td>Сверхвысокоскоростная</td><td>1–10 Гбит/с</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="callout info" style="margin-top:12px">
+            <span class="callout-title">Как не перепутать</span>
+            Масштаб, владелец, скорость и среда передачи — разные признаки. Скоростные границы выше приведены как упрощённая учебная шкала из материала; это не универсальный стандарт, а реальная скорость зависит от технологии и оборудования. По среде сети бывают проводными и беспроводными — смотри раздел «Каналы связи».
+          </div>
+          <div class="callout tip" style="margin-top:10px">
+            <span class="callout-title">WAN и GAN</span>
+            WAN обычно обозначает сеть на большой территории. В некоторых учебниках GAN отдельно называют глобальную сеть; другие включают глобальные примеры в WAN. Ориентируйся на определения в заданном учебнике и различай масштаб сети и её принадлежность.
           </div>
         </div>
 
@@ -975,6 +1014,35 @@
               </tbody>
             </table>
           </div>
+        </div>
+
+        <div class="card">
+          <h2>Облачные вычисления</h2>
+          <div class="def" style="margin-top:8px"><span class="term">Облачные вычисления</span> — использование вычислительных ресурсов и программ, которые работают на удалённых серверах и доступны через сеть.</div>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="card soft">
+              <h3>Модели размещения</h3>
+              <ul class="small muted" style="margin-top:8px">
+                <li><b>Частное облако</b> — инфраструктура для одной организации.</li>
+                <li><b>Публичное облако</b> — сервисы провайдера для широкого круга клиентов.</li>
+                <li><b>Гибридное облако</b> — сочетает частную и публичную инфраструктуру.</li>
+                <li><b>Облако сообщества</b> — общее для организаций со сходными требованиями.</li>
+              </ul>
+            </div>
+            <div class="card soft">
+              <h3>Модели услуг</h3>
+              <ul class="small muted" style="margin-top:8px">
+                <li><b>IaaS</b> — аренда виртуальных серверов, сетей и хранилища.</li>
+                <li><b>PaaS</b> — готовая среда для разработки и запуска приложений.</li>
+                <li><b>SaaS</b> — готовая программа через браузер или приложение.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:12px">
+            <div class="callout tip"><span class="callout-title">Преимущества</span>Можно пользоваться ресурсами удалённо, быстро увеличивать мощность и совместно работать с файлами без покупки собственного сервера.</div>
+            <div class="callout warn"><span class="callout-title">Ограничения</span>Нужны сеть и подходящие меры защиты; доступность зависит от провайдера, а хранение данных требует контроля прав и резервных копий.</div>
+          </div>
+          <p class="tiny muted" style="margin-top:10px">Модель размещения (частное, публичное, гибридное, облако сообщества) отвечает на вопрос «для кого и где?». Модель услуги (IaaS, PaaS, SaaS) — «что предоставляет провайдер?».</p>
         </div>
 
         <div class="card">
@@ -1229,6 +1297,28 @@
             <span class="callout-title">Сравнение</span>
             Проводная связь обычно стабильнее и защищённее от помех. Беспроводная удобнее, но зависит от расстояния, препятствий и радиопомех.
           </div>
+        </div>
+
+        <div class="card">
+          <h2>Пропускная способность и объём данных</h2>
+          <p class="small muted">Пропускная способность показывает, сколько битов канал может передать за секунду. Фактическая скорость обычно ниже из-за служебных данных, помех и ограничений оборудования.</p>
+          <div class="grid-3" style="margin-top:12px">
+            <div class="card soft"><h3>Пропускная способность</h3><p class="tiny muted">Скорость канала: бит/с, Кбит/с, Мбит/с или Гбит/с. В сетевых единицах приставки обычно десятичные: 1 Мбит/с = 1000 Кбит/с.</p></div>
+            <div class="card soft"><h3>Надёжность</h3><p class="tiny muted">Способность канала передавать данные с малым числом ошибок и потерь.</p></div>
+            <div class="card soft"><h3>Стоимость и расширение</h3><p class="tiny muted">Цена подключения и возможность добавлять устройства без существенной перестройки сети.</p></div>
+          </div>
+          <div class="callout info" style="margin-top:12px">
+            <span class="callout-title">Формула</span>
+            <b>Q = q × t</b>, где Q — объём переданных данных в битах, q — скорость канала в битах в секунду, t — время в секундах. Для перевода битов в байты раздели результат на 8.
+          </div>
+          <div class="calc-form" style="margin-top:14px" aria-label="Калькулятор объёма передачи">
+            <label class="field"><span>Скорость канала, Мбит/с</span><input id="throughputRate" type="number" min="0.001" max="100000" step="any" value="100" inputmode="decimal"></label>
+            <label class="field"><span>Время, минут</span><input id="throughputMinutes" type="number" min="0.001" max="100000" step="any" value="60" inputmode="decimal"></label>
+            <button class="btn primary" id="throughputCalc" type="button">Рассчитать</button>
+          </div>
+          <p class="calc-error" id="throughputError" aria-live="polite"></p>
+          <div class="calc-results" id="throughputResult" aria-live="polite"></div>
+          <p class="tiny muted" style="margin-top:8px">Это теоретический максимум без учёта служебных данных и потерь. 1 байт = 8 бит; для десятичных сетевых единиц 1 Гбит = 1000 Мбит.</p>
         </div>
 
         <div class="card pad-lg">
