@@ -58,6 +58,14 @@
       .replace(/'/g, "&#39;");
   }
 
+  function plural(count, one, few, many) {
+    const mod10 = count % 10;
+    const mod100 = count % 100;
+    if (mod10 === 1 && mod100 !== 11) return one;
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return few;
+    return many;
+  }
+
   function escapeRegExp(value) {
     return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
@@ -1356,54 +1364,72 @@
   if (calcIp && calcPrefix) calcSubnet();
 
   /* ------------------------------------------------------------
-     Калькулятор объёма передачи данных
+     Калькулятор объёма данных
      ------------------------------------------------------------ */
 
-  const throughputRate = $("#throughputRate");
-  const throughputMinutes = $("#throughputMinutes");
-  const throughputBtn = $("#throughputCalc");
-  const throughputError = $("#throughputError");
-  const throughputResult = $("#throughputResult");
+  const bwRate = $("#bwRate");
+  const bwTime = $("#bwTime");
+  const bwBtn = $("#bwCalc");
+  const bwError = $("#bwError");
+  const bwResults = $("#bwResults");
 
-  function calcThroughput() {
-    if (!throughputRate || !throughputMinutes || !throughputResult) return;
-    const rate = Number(throughputRate.value);
-    const minutes = Number(throughputMinutes.value);
-    const validRate = Number.isFinite(rate) && rate > 0 && rate <= 100000;
-    const validTime = Number.isFinite(minutes) && minutes > 0 && minutes <= 100000;
+  function formatBw(value) {
+    return Number(value.toFixed(3)).toLocaleString("ru-RU", { maximumFractionDigits: 3 });
+  }
 
-    if (throughputError) {
-      throughputError.textContent = validRate && validTime
-        ? ""
-        : "Введи скорость от 0 до 100 000 Мбит/с и время от 0 до 100 000 минут.";
-    }
-    if (!validRate || !validTime) {
-      throughputResult.innerHTML = "";
+  function calcBandwidth() {
+    if (!bwResults) return;
+    const rate = Number(bwRate && bwRate.value);
+    const time = Number(bwTime && bwTime.value);
+
+    if (bwError) bwError.textContent = "";
+    if (
+      !bwRate ||
+      !bwTime ||
+      bwRate.value === "" ||
+      bwTime.value === "" ||
+      !isFinite(rate) ||
+      !isFinite(time) ||
+      rate < 0 ||
+      time < 0
+    ) {
+      if (bwError) bwError.textContent = "Введи неотрицательные числа скорости и времени.";
+      bwResults.innerHTML = "";
       return;
     }
 
-    const seconds = minutes * 60;
-    const megabytes = (rate * 1000000 * seconds) / 8 / 1000000;
-    const gigabytes = megabytes / 1000;
-    const formatter = new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 2 });
-    throughputResult.innerHTML = [
-      ["Время", formatter.format(seconds) + " с", false],
-      ["Объём в десятичных единицах", formatter.format(megabytes) + " МБ", true],
-      ["То же самое", formatter.format(gigabytes) + " ГБ", false]
-    ].map(([label, value, highlight]) =>
-      '<div class="calc-result' + (highlight ? " highlight" : "") + '"><span class="cr-label">' +
-      esc(label) + '</span><span class="cr-value">' + esc(value) + "</span></div>"
-    ).join("");
+    const mbit = rate * time;
+    const mbyte = mbit / 8;
+    const gbyte = mbyte / 1024;
+    const rows = [
+      { label: "Объём Q", value: formatBw(mbit) + " Мбит", highlight: true },
+      { label: "В мегабайтах", value: formatBw(mbyte) + " МБ" },
+      { label: "В гигабайтах", value: formatBw(gbyte) + " ГБ" }
+    ];
+
+    bwResults.innerHTML = rows
+      .map(
+        (row) =>
+          '<div class="calc-result' +
+          (row.highlight ? " highlight" : "") +
+          '"><span class="cr-label">' +
+          row.label +
+          '</span><span class="cr-value">' +
+          row.value +
+          "</span></div>"
+      )
+      .join("");
   }
 
-  if (throughputBtn) throughputBtn.addEventListener("click", calcThroughput);
-  [throughputRate, throughputMinutes].forEach((input) => {
-    if (!input) return;
-    input.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") calcThroughput();
-    });
+  if (bwBtn) bwBtn.addEventListener("click", calcBandwidth);
+  [bwRate, bwTime].forEach((input) => {
+    if (input) {
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") calcBandwidth();
+      });
+    }
   });
-  if (throughputRate && throughputMinutes) calcThroughput();
+  if (bwRate && bwTime) calcBandwidth();
 
   /* ------------------------------------------------------------
      Сопоставление протоколов
@@ -1842,7 +1868,8 @@
   const flashData = (window.ENT_DATA && window.ENT_DATA.flashcards) || [];
   const flashCountBadge = $("#flashCountBadge");
   if (flashCountBadge && flashData.length) {
-    flashCountBadge.textContent = flashData.length + " терминов";
+    flashCountBadge.textContent =
+      flashData.length + " " + plural(flashData.length, "термин", "термина", "терминов");
   }
   if (flashcard && flashData.length) {
     const flashFront = $("#flashFront");
