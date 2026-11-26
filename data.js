@@ -598,84 +598,84 @@ window.ENT_DATA = {
 
     /* ---------- PROGRAMMING ---------- */
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "Какой метод добавляет новый элемент в конец массива?",
       options: ["push()", "pop()", "shift()", "unshift()"],
       correct: [0],
       explain: "push() добавляет элемент в конец массива и возвращает новую длину. pop() удаляет последний, shift() — первый, unshift() добавляет в начало."
     },
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "Какой метод удаляет последний элемент массива и возвращает его значение?",
       options: ["push()", "pop()", "shift()", "slice()"],
       correct: [1],
       explain: "pop() удаляет последний элемент и возвращает его. push() добавляет в конец, shift() удаляет первый."
     },
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "Какая функция преобразует строку в целое число?",
       options: ["parseInt()", "parseFloat()", "String()", "Number.isInteger()"],
       correct: [0],
       explain: "parseInt() разбирает строку и возвращает целое число. parseFloat() возвращает число с плавающей точкой, String() — наоборот, строку."
     },
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "Какой оператор сравнивает значения строго, без приведения типов?",
       options: ["=", "==", "===", "!="],
       correct: [2],
       explain: "=== сравнивает значение и тип без приведения. == допускает приведение типов, = — присваивание."
     },
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "Какая конструкция выполняет блок кода только при истинности условия?",
       options: ["for", "if", "while", "switch"],
       correct: [1],
       explain: "if проверяет условие и выполняет блок, если оно истинно. for и while — циклы, switch выбирает ветвь по значению."
     },
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "Какой цикл выполняется, пока условие остаётся истинным?",
       options: ["if", "while", "return", "try"],
       correct: [1],
       explain: "while повторяет блок, пока условие истинно. Важно менять условие внутри цикла, иначе он станет бесконечным."
     },
     {
-      topic: "programming", level: "B", type: "single", wording: true,
+      topic: "programming", lang: "JavaScript", level: "B", type: "single", wording: true,
       q: "Язык программирования, который используют для интерактивности веб-страниц и взаимодействия с элементами HTML-документа.",
       options: ["HTML", "CSS", "JavaScript", "SQL"],
       correct: [2],
       explain: "Речь о JavaScript. HTML задаёт структуру, CSS — оформление, SQL — работу с базами данных."
     },
     {
-      topic: "programming", level: "B", type: "single", wording: true,
+      topic: "programming", lang: "JavaScript", level: "B", type: "single", wording: true,
       q: "Объектная модель, представляющая HTML-документ в виде дерева элементов, к которым может обращаться программа.",
       options: ["DOM", "CSSOM", "JSON", "API"],
       correct: [0],
       explain: "DOM (Document Object Model) — дерево элементов страницы. Через DOM JavaScript изменяет содержимое и стили."
     },
     {
-      topic: "programming", level: "A", type: "single",
+      topic: "programming", lang: "JavaScript", level: "A", type: "single",
       q: "С какого индекса начинается нумерация элементов массива в JavaScript?",
       options: ["0", "1", "-1", "С любого"],
       correct: [0],
       explain: "В JavaScript индексация начинается с 0: первый элемент имеет индекс 0, второй — 1."
     },
     {
-      topic: "programming", level: "B", type: "single", wording: true,
+      topic: "programming", lang: "JavaScript", level: "B", type: "single", wording: true,
       q: "Именованный блок кода, который можно вызвать несколько раз и которому можно передать аргументы.",
       options: ["Массив", "Функция", "Цикл", "Объект"],
       correct: [1],
       explain: "Функция инкапсулирует действия, принимает аргументы и возвращает результат. Это основной способ переиспользования кода."
     },
     {
-      topic: "programming", level: "A", type: "multi",
+      topic: "programming", lang: "JavaScript", level: "A", type: "multi",
       q: "Какие методы изменяют исходный массив?",
       options: ["push()", "pop()", "splice()", "map()", "slice()"],
       correct: [0, 1, 2],
       explain: "push(), pop() и splice() изменяют исходный массив. map() и slice() возвращают новый массив, не меняя старый."
     },
     {
-      topic: "programming", level: "B", type: "multi",
+      topic: "programming", lang: "JavaScript", level: "B", type: "multi",
       q: "Какие операторы сравнивают значения без приведения типов?",
       options: ["==", "===", "!=", "!=="],
       correct: [1, 3],
@@ -1499,6 +1499,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Язык программирования, используемый для интерактивности веб-страниц и взаимодействия с элементами HTML-документа.",
       options: ["HTML", "CSS", "JavaScript", "SQL"],
       correct: 2,
@@ -1506,6 +1507,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Объектная модель, представляющая HTML-документ в виде дерева элементов.",
       options: ["DOM", "CSSOM", "JSON", "API"],
       correct: 0,
@@ -1513,6 +1515,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Метод добавления нового элемента в конец массива.",
       options: ["push()", "pop()", "shift()", "unshift()"],
       correct: 0,
@@ -1520,6 +1523,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Метод удаления последнего элемента массива с возвратом удалённого значения.",
       options: ["push()", "pop()", "shift()", "slice()"],
       correct: 1,
@@ -1527,6 +1531,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Метод преобразования строки в целое число.",
       options: ["parseInt()", "parseFloat()", "String()", "Number.isInteger()"],
       correct: 0,
@@ -1534,6 +1539,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Оператор строгого сравнения значений без приведения типов.",
       options: ["=", "==", "===", "!="],
       correct: 2,
@@ -1541,6 +1547,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Конструкция, позволяющая выполнить блок кода при выполнении определённого логического условия.",
       options: ["if", "for", "while", "switch"],
       correct: 0,
@@ -1548,6 +1555,7 @@ window.ENT_DATA = {
     },
     {
       topic: "programming",
+      lang: "JavaScript",
       q: "Цикл, выполняющийся до тех пор, пока заданное условие истинно.",
       options: ["if", "while", "return", "try"],
       correct: 1,
@@ -1644,8 +1652,8 @@ window.ENT_DATA = {
     { topic: "hardware", term: "Кэш-память", def: "Высокоскоростная память между ядром и RAM для часто используемых данных и инструкций. Уровни L1–L3 различаются скоростью и объёмом." },
     { topic: "software", term: "Компилятор", def: "Транслятор, который переводит весь исходный код в машинный до выполнения и создаёт исполняемый файл. Примеры: C/C++." },
     { topic: "software", term: "Интерпретатор", def: "Транслятор, который разбирает и выполняет код по мере чтения, без отдельного исполняемого файла. Примеры: Python, JavaScript." },
-    { topic: "programming", term: "JavaScript", def: "Язык программирования для интерактивности веб-страниц: реагирует на действия пользователя и изменяет содержимое HTML-документа через DOM." },
-    { topic: "programming", term: "DOM", def: "Document Object Model — объектная модель HTML-документа в виде дерева элементов, к которым обращается программа для изменения страницы." },
+    { topic: "programming", lang: "JavaScript", term: "JavaScript", def: "Язык программирования для интерактивности веб-страниц: реагирует на действия пользователя и изменяет содержимое HTML-документа через DOM." },
+    { topic: "programming", lang: "JavaScript", term: "DOM", def: "Document Object Model — объектная модель HTML-документа в виде дерева элементов, к которым обращается программа для изменения страницы." },
     { topic: "networks", term: "Ведомственная сеть", def: "Сеть, принадлежащая одной организации или учреждению и обслуживающая его внутренние задачи: банк, предприятие, кассы." },
     { topic: "networks", term: "Государственная сеть", def: "Сеть, принадлежащая государственным структурам: органы внутренних дел, таможенная служба, комитет национальной безопасности." },
     { topic: "networks", term: "Облачные технологии", def: "Модель предоставления вычислений, хранения и программ через интернет. Серверы, реализующие облачные вычисления, называют вычислительными облаками." },

@@ -1664,6 +1664,7 @@
       question.level +
       "</span>" +
       (question.type === "multi" ? '<span class="badge warn">Несколько ответов</span>' : "") +
+      (question.lang ? '<span class="badge good">' + esc(question.lang) + "</span>" : "") +
       (question.wording ? '<span class="badge b">Академическая формулировка</span>' : "") +
       "</div>" +
       '<div class="q-text">' +
@@ -1898,7 +1899,7 @@
       flipped = false;
       if (flashFront) flashFront.textContent = card.term;
       if (flashBack) flashBack.textContent = card.def;
-      if (flashTag) flashTag.textContent = topicNames[card.topic] || "Термин";
+      if (flashTag) flashTag.textContent = (topicNames[card.topic] || "Термин") + (card.lang ? " · " + card.lang : "");
       if (flashCounter) flashCounter.textContent = cursor + 1 + " / " + order.length;
       if (flashKnownEl) flashKnownEl.textContent = known.size;
       if (flashRepeatEl) flashRepeatEl.textContent = repeat.size;
@@ -2043,7 +2044,8 @@
         (topicClasses[item.topic] || "") +
         '">' +
         esc(topicNames[item.topic] || item.topic) +
-        '</span><span class="badge b">Определи по описанию</span></div>' +
+        '</span><span class="badge b">Определи по описанию</span>' +
+        (item.lang ? '<span class="badge good">' + esc(item.lang) + "</span>" : "") + '</div>' +
         '<div class="q-text">' +
         esc(item.q) +
         '</div><div class="q-sub">Прочитай описание целиком и выбери понятие, которое ему соответствует.</div>' +
