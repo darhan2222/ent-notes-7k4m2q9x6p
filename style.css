@@ -862,6 +862,27 @@ html[data-theme="light"] .bit.net { color: #3730a3; }
 .q-card { padding: 24px; }
 .q-meta { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 12px; }
 .q-text { font-size: 18px; font-weight: 650; line-height: 1.45; letter-spacing: -0.01em; }
+.q-code {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--card-3);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+.q-option .q-code {
+  margin: 0;
+  padding: 9px 11px;
+  font-size: 12.5px;
+  max-width: 100%;
+}
+.q-option .q-code:first-child { margin-top: 0; }
 .q-sub { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
 .q-options { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
 .q-option {

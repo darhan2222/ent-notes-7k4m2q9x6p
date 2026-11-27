@@ -49,6 +49,20 @@
     programming: "violet"
   };
 
+  function optionBody(option) {
+    if (option && typeof option === "object" && option.code) {
+      return '<pre class="q-code">' + esc(option.code) + "</pre>";
+    }
+    return esc(String(option));
+  }
+
+  function optionLabel(option, index) {
+    if (option && typeof option === "object") {
+      return "вариант " + "ABCDEFGHIJ".charAt(index);
+    }
+    return String(option);
+  }
+
   function esc(value) {
     return String(value)
       .replace(/&/g, "&amp;")
@@ -1585,12 +1599,12 @@
     const chosenText = quizState.selected
       .slice()
       .sort((a, b) => a - b)
-      .map((index) => question.options[index])
+      .map((index) => optionLabel(question.options[index], index))
       .join(", ");
     const correctText = question.correct
       .slice()
       .sort((a, b) => a - b)
-      .map((index) => question.options[index])
+      .map((index) => optionLabel(question.options[index], index))
       .join(", ");
 
     const feedback = $("#qFeedback");
@@ -1646,9 +1660,9 @@
           index +
           '"><span class="q-letter">' +
           letters[index] +
-          "</span><span>" +
-          esc(option) +
-          "</span></button>"
+          "</span>" +
+          optionBody(option) +
+          "</button>"
       )
       .join("");
 
@@ -1669,7 +1683,9 @@
       "</div>" +
       '<div class="q-text">' +
       esc(question.q) +
-      '</div><div class="q-sub">' +
+      "</div>" +
+      (question.code ? '<pre class="q-code">' + esc(question.code) + "</pre>" : "") +
+      '<div class="q-sub">' +
       typeHint +
       '</div><div class="q-options">' +
       optionsHtml +
