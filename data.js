@@ -1125,7 +1125,7 @@ window.ENT_DATA = {
       q: "Какой тег вставляет изображение на страницу?",
       options: ["<image>", "<img>", "<pic>", "<src>"],
       correct: [1],
-      explain: "Изображение вставляет тег <img> с атрибутом src, где указан путь к файлу. Тега <image> в HTML нет."
+      explain: "Стандартный тег для изображения — <img> с атрибутом src, где указан путь к файлу. Тега <pic> в HTML нет."
     },
     {
       topic: "programming", lang: "HTML", level: "A", type: "single",
